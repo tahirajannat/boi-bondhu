@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { RiCloseCircleFill } from "react-icons/ri";
+import { UseUser } from "./contexts/AuthContext";
+
 // import {
 //   passwordDecryption,
 //   passwordEncryption,
 // } from "../utility/passwordEncryption";
 export default function Login() {
   const [showModal, setShowModal] = useState(false);
-
+  const { setUser } = UseUser();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -64,15 +66,15 @@ export default function Login() {
 
     console.log(`💩`, { email, password });
 
-    if (email !== "") {
-    } else {
-      setEmailError("Email Required");
-    }
+    // if (email !== "") {
+    // } else {
+    //   setEmailError("Email Required");
+    // }
 
-    if (password !== "") {
-    } else {
-      setPasswordError("Passwoed Required");
-    }
+    // if (password !== "") {
+    // } else {
+    //   setPasswordError("Passwoed Required");
+    // }
 
     //   const requestOptions = {
     //     method: "GET",
@@ -96,8 +98,18 @@ export default function Login() {
     //     toast("Something Wrong Or Duplicate Email !!");
     //   }
     // };
-  };
 
+    const myUser = {
+      loggedIn: true,
+      profile: {
+        name: "Tahira",
+        email: "tahira@gmail.com",
+      },
+    };
+    setUser(myUser);
+
+    setShowModal(false);
+  };
   return (
     <>
       <button
@@ -177,7 +189,7 @@ export default function Login() {
                     </div>
                   )}
                   <button class="bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded">
-                    Login
+                    Login1
                   </button>
                 </form>
                 <a class="text-blue-700 text-left text-sm" href="/login">

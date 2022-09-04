@@ -1,10 +1,18 @@
 // import { Route, Router, Routes } from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
 import logo from "../assets/logo-4.png";
+import { UseUser } from "./contexts/AuthContext";
 import Login from "./Login";
 // import Shop from "./Shop";
 import SignUp from "./SignUp";
-
 export default function MainNav(props) {
+  const [isLogin, setIsLogin] = useState(false);
+  const { user, setUser } = UseUser();
+
+  useEffect(() => {
+    //
+    user?.loggedIn ? setIsLogin(true) : setIsLogin(false);
+  }, [user?.loggedIn]);
   return (
     <header className="bg-white  shadow-lg transition-shadow font-serif z-20">
       <div className="container mx-auto  px-20 py-6 grid grid-cols-12 gap-4">
@@ -51,8 +59,27 @@ export default function MainNav(props) {
         </div>
         <div className=" col-span-4 text-right flex-wrap mt-3">
           <div className=" flex-wrap text-right">
-            <Login />
-            <SignUp />
+            {!isLogin ? (
+              <Fragment>
+                <Login />
+                <SignUp />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <h2>Welcome {user?.profile?.name}</h2>
+
+                <button
+                  onClick={() =>
+                    setUser({
+                      loggedIn: false,
+                    })
+                  }
+                >
+                  Sign Out
+                </button>
+              </Fragment>
+            )}
+
             <select
               class="classic appearance-none py-1 pl-4 pr-8 rounded-md  bg-transparent text-black focus:outline-nones text-left border border-black"
               name="whatever"

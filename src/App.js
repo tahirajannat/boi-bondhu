@@ -4,6 +4,7 @@ import Borrow from "./components/Borrow";
 import ChatBox from "./components/ChatBox";
 import CommentBox from "./components/CommentBox";
 import Contact from "./components/Contact";
+import AuthContext from "./components/contexts/AuthContext";
 import DashboardUser from "./components/DashboardUser";
 import Exchange from "./components/Exchange";
 // import ChatBox from "./components/ChatBox";
@@ -18,32 +19,35 @@ import Shop from "./components/Shop";
 function App() {
   return (
     <div className="App">
-      <MainNav />
-      <Router>
-        <Menu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/lend-books" element={<Lend />} />
-          <Route path="/borrow-books" element={<Borrow />} />
-          <Route path="/exchange-books" element={<Exchange />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/itemSlug" element={<ItemSingle />} />
-          <Route path="/chat" element={<ChatBox />} />
-          <Route path="/comment" element={<CommentBox />} />
-          <Route path="/dashboard" element={<DashboardUser />} />
-          <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
-        </Routes>
-      </Router>
-      {/* <Slider />
+      <AuthContext>
+        <MainNav />
+        <Router>
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/lend-books" element={<Lend />} />
+            <Route path="/borrow-books" element={<Borrow />} />
+            <Route path="/exchange-books" element={<Exchange />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/itemSlug" element={<ItemSingle />} />
+            <Route path="/chat" element={<ChatBox />} />
+            <Route path="/comment" element={<CommentBox />} />
+            <Route path="/dashboard" element={<DashboardUser />} />
+            <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
+          </Routes>
+        </Router>
+        {/* <Slider />
       <BottomNav />
       <ItemsCard />
       <Testimonial /> */}
-      {/* <Shop /> */}
-      {/* <ItemSingle />
+        {/* <Shop /> */}
+        {/* <ItemSingle />
       <ChatBox /> */}
-      {/* <ProductGrid /> */}
-      <Footer />
+        {/* <ProductGrid /> */}
+        <Footer />
+      </AuthContext>
+
       {/* <TestimonialSlider /> */}
     </div>
   );

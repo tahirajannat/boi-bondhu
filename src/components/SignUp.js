@@ -30,7 +30,7 @@ export default function SignUp() {
         "http://localhost:3009/api/user",
         requestOptions
       );
-      const data = await response.json();
+      const data = await response.json(); 
       console.log(`💩 ~ file: SignUp.js ~ line 22 ~ handleSignUp ~ data`, data);
       if (data) {
         toast(`${data?.message}`);
