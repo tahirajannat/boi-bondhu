@@ -30,6 +30,9 @@ export default function Menu(props) {
             <a href="/shop" className=" relative">
               Shop
             </a>
+            <a href="/all-books" className=" relative">
+              All Books
+            </a>
           </ul>
         </nav>
       </div>

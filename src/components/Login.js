@@ -189,7 +189,7 @@ export default function Login() {
                     </div>
                   )}
                   <button class="bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded">
-                    Login1
+                    Login
                   </button>
                 </form>
                 <a class="text-blue-700 text-left text-sm" href="/login">

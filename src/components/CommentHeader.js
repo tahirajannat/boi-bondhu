@@ -1,6 +1,13 @@
 import CommentBtn from "./CommentBtn";
 
-const CommentHeader = ({commentData, setReplying, setDeleting, setDeleteModalState, setEditing, time}) => {
+const CommentHeader = ({
+  commentData,
+  setReplying,
+  setDeleting,
+  setDeleteModalState,
+  setEditing,
+  time,
+}) => {
   return (
     <div className="comment--header">
       <div className={`profile-pic ${commentData.username}`}></div>

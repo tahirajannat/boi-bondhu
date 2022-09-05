@@ -40,3 +40,36 @@ const Data = [
   },
 ];
 export default Data;
+
+export const Reviews = [
+  {
+    user_name: "Anonymous_1",
+    review:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius",
+    profile_picture:
+      "https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4",
+    time: "sept 22, 2022",
+  },
+  {
+    user_name: "Anonymous_1",
+    review:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius",
+    profile_picture:
+      "https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4",
+    time: "August 22, 2022",
+  },
+  {
+    user_name: "Anonymous_1",
+    review:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius",
+    profile_picture: "./Assets/avatars/image-amyrobson.png",
+    time: "july 22, 2022",
+  },
+  {
+    user_name: "Anonymous_1",
+    review:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius",
+    profile_picture: "./Assets/avatars/image-ramsesmiron.png",
+    time: "August 22, 2022",
+  },
+];

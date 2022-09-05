@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import AllBooks from "./components/AllBooks";
 import Borrow from "./components/Borrow";
 import ChatBox from "./components/ChatBox";
 import CommentBox from "./components/CommentBox";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/exchange-books" element={<Exchange />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/all-books" element={<AllBooks />} />
             <Route path="/itemSlug" element={<ItemSingle />} />
             <Route path="/chat" element={<ChatBox />} />
             <Route path="/comment" element={<CommentBox />} />
@@ -37,6 +39,8 @@ function App() {
             <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
           </Routes>
         </Router>
+
+        {/* <Login /> */}
         {/* <Slider />
       <BottomNav />
       <ItemsCard />

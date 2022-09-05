@@ -1,5 +1,5 @@
-import { ReactComponent as IconPlus } from "../Assets/images/icon-plus.svg";
 import { ReactComponent as IconMinus } from "../Assets/images/icon-minus.svg";
+import { ReactComponent as IconPlus } from "../Assets/images/icon-plus.svg";
 
 const CommentVotes = ({
   vote,

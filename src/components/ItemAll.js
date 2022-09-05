@@ -6,7 +6,7 @@ export default function ItemAll() {
     <div>
       <section aria-labelledby="products-heading" className="pt-6 pb-24">
         {/* <ItemsCard /> */}
-        <ProductCard />
+        <ProductCard size="col-span-4" />
         <div className="flex justify-center mt-10 space-x-1">
           <button className="flex items-center justify-center h-8 w-8 rounded text-gray-400">
             <svg

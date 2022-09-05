@@ -1,16 +1,20 @@
 import React from "react";
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Data from "../data";
 
-export default function ProductCard() {
+export default function ProductCard({ size }) {
   return (
     <div>
       <div class=" items-center bg-white ">
         <div class="container mx-auto ">
           <div className="grid grid-cols-12 gap-4">
             {Data.slice(0, 4).map((index, key) => (
-              <div class=" col-span-3 ">
+              <div
+                class={`mr-3 border-b-2 border-gray-200 ${
+                  size ? size : "col-span-3"
+                }`}
+              >
                 <div class="bg-gray-100 rounded-lg m-h-56  transform hover:translate-y-1 shadow-xl transition duration-300">
                   <figure class="mb-3 pt-3">
                     <img
@@ -53,46 +57,37 @@ export default function ProductCard() {
                       </span>
                     </div>
                     <Link to="/itemSlug">
-                      <div class="inline-flex items-center text-center mx-auto my-2">
+                      <div class="inline-flex items-center text-center my-2">
                         {/* <div class="text-sm text-white font-light">Travel</div> */}
-                        <div class=" flex text-center text-red-300  ">
-                          <a
-                            href="/#"
-                            className="p-2 mx-1 bg-white rounded-full  hover:shadow-xl   transition duration-300 justify-between"
-                          >
-                            <FaLinkedinIn />
-                          </a>
-                          <a
-                            href="/#"
-                            className="p-2 mx-1 bg-white rounded-full  hover:shadow-xl transition duration-300 justify-between"
-                          >
-                            <FaTwitter />
-                          </a>
-                          <a
-                            href="/#"
-                            className="p-2 mx-1 bg-white rounded-full  hover:shadow-xl  transition duration-300 justify-between"
-                          >
-                            <FaFacebookF />
-                          </a>
+                        <div class=" flex text-center text-red-300  mx-8">
+                          <span className="flex items-center text-yellow-500">
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaRegStar />
+                          </span>
                         </div>
 
-                        <button class="rounded-full bg-red-300 justify-between ml-1 text-white hover:bg-white hover:text-red-300 hover:shadow-xl focus:outline-none w-8 h-8 flex  transition duration-300">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="stroke-current m-auto"
-                          >
-                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                          </svg>
-                        </button>
+                        <a href="/itemSlug">
+                          <button class="rounded-full bg-red-300 justify-between mx-8 text-white hover:bg-white hover:text-red-300 hover:shadow-xl focus:outline-none w-8 h-8 flex  transition duration-300 ">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="stroke-current m-auto"
+                            >
+                              <line x1="12" y1="5" x2="12" y2="19"></line>
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                          </button>
+                        </a>
                       </div>
                     </Link>
                   </div>
