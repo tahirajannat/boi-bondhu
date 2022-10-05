@@ -1,4 +1,5 @@
 import React from "react";
+import FilterMethod01 from "./FilterMethod01";
 import ItemAll from "./ItemAll";
 import Sidebar from "./Sidebar";
 
@@ -12,6 +13,7 @@ export default function Shop() {
           {/* <h1 class="text-4xl font-bold tracking-tight text-gray-900">
             New Arrivals
           </h1> */}
+          <FilterMethod01 />
           <div class="text-right col-span-1">
             <div class=" items-center">
               <div class="relative inline-block text-left">

@@ -1,5 +1,6 @@
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
 // import { FaFunnelDollar } from "react-icons/fa";
 import {
   HiChevronDown,
@@ -9,7 +10,8 @@ import {
   HiViewGrid,
   HiX,
 } from "react-icons/hi";
-import ItemAll from "./ItemAll";
+import { Link } from "react-router-dom";
+// import ItemAll from "./ItemAll";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -19,61 +21,132 @@ const sortOptions = [
   { name: "Price: High to Low", href: "#", current: false },
 ];
 const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
+  { name: "Lend Books", href: "#" },
+  { name: "Borrow Books", href: "#" },
+  { name: "Exchange Books", href: "#" },
 ];
 const filters = [
   {
-    id: "color",
-    name: "Color",
+    id: "area",
+    name: "Area",
     options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
+      { value: "mirpur", label: "Mirpur", checked: false },
+      { value: "dhanmondi", label: "Dhanmondi", checked: false },
+      { value: "azimpur", label: "Azimpur", checked: true },
+      { value: "mohammadpur", label: "Mohammadpur", checked: false },
+      { value: "basundhora", label: "Basundhora", checked: false },
+      { value: "shyamoli", label: "Shyamoli", checked: false },
     ],
   },
   {
     id: "category",
     name: "Category",
     options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
+      { value: "novel", label: "Novel", checked: false, dataFilter: ".novel" },
+      { value: "thrilar", label: "Thrilar", checked: false },
+      { value: "travel", label: "Thrilar", checked: true },
+      { value: "cook-book", label: "Cook Book", checked: false },
+      { value: "megazine", label: "Megazine", checked: false },
     ],
   },
   {
-    id: "size",
-    name: "Size",
+    id: "preferences",
+    name: "Preferences",
     options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
+      { value: "most-popular", label: "Most Popular", checked: true },
+      { value: "best-rating", label: "Best Rating", checked: false },
+      { value: "newest", label: "Newest", checked: false },
+      { value: "top-lended", label: "Top Lended", checked: false },
+      { value: "top-borrowed", label: "Top Borrowed", checked: false },
+      { value: "top-exchanged", label: "Top Exchanged", checked: false },
+    ],
+  },
+];
+const movieData = [
+  {
+    title: "movie 1",
+    genre: ["action", "thriller"],
+  },
+  {
+    title: "movie 2",
+    genre: ["comedy", "drama"],
+  },
+  {
+    title: "movie 3",
+    genre: ["comedy", "action"],
+  },
+  { title: "movie 4", genre: "thriller" },
+  {
+    title: "movie 5",
+    genre: "comedy",
+  },
+  {
+    title: "movie 6",
+    genre: "action",
+  },
+  {
+    title: "movie 7",
+    genre: "drama",
+  },
+  { value: "most-popular" },
+  { value: "Best Rating" },
+  { value: "Top Lended" },
+  { value: "Top-Borrowed" },
+  {
+    id: "preferences",
+    name: "Preferences",
+    options: [
+      { value: "most-popular", label: "Most Popular", checked: true },
+      { value: "best-rating", label: "Best Rating", checked: false },
+      { value: "newest", label: "Newest", checked: false },
+      { value: "top-lended", label: "Top Lended", checked: false },
+      { value: "top-borrowed", label: "Top Borrowed", checked: false },
+      { value: "top-exchanged", label: "Top Exchanged", checked: false },
     ],
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+const movie = [
+  { genre: "thriller" },
+  { genre: "comedy" },
+  { genre: "action" },
+  { genre: "drama" },
+];
 
 export default function Example() {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
+  const [genre, setGenre] = useState([]);
+  const [filteredGenre, setFilteredGenre] = useState([]);
+
+  const handleChange = (e) => {
+    if (e.target.checked) {
+      setGenre([...genre, e.target.value]);
+    } else {
+      setGenre(genre.filter((id) => id !== e.target.value));
+    }
+  };
+
+  useEffect(() => {
+    if (genre.length === 0) {
+      setFilteredGenre(movieData);
+    } else {
+      setFilteredGenre(
+        movieData.filter((movie) =>
+          genre.some((category) => [movie.genre].flat().includes(category))
+        )
+      );
+    }
+  }, [genre]);
+
   return (
-    <div className="bg-white">
+    <div className="bg-white container mx-auto px-10">
       <div>
         {/* Mobile filter dialog */}
+
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog
             as="div"
@@ -197,7 +270,7 @@ export default function Example() {
           </Dialog>
         </Transition.Root>
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main className="mx-auto ">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
@@ -268,84 +341,274 @@ export default function Example() {
               Products
             </h2>
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+            <div className="grid grid-cols-12 gap-x-8 gap-y-10 ">
               {/* Filters */}
-              <form className="hidden lg:block">
-                <h3 className="sr-only">Categories</h3>
-                <ul
-                  role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
-
-                {filters.map((section) => (
-                  <Disclosure
-                    as="div"
-                    key={section.id}
-                    className="border-b border-gray-200 py-6"
+              <div className="col-span-2">
+                <form className="hidden lg:block">
+                  <h3 className="sr-only">Categories</h3>
+                  <ul
+                    role="list"
+                    className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
                   >
-                    {({ open }) => (
-                      <>
-                        <h3 className="-my-3 flow-root">
-                          <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                            <span className="font-medium text-gray-900">
-                              {section.name}
-                            </span>
-                            <span className="ml-6 flex items-center">
-                              {open ? (
-                                <HiMinusSm
-                                  className="h-5 w-5"
-                                  aria-hidden="true"
-                                />
-                              ) : (
-                                <HiPlusSm
-                                  className="h-5 w-5"
-                                  aria-hidden="true"
-                                />
-                              )}
-                            </span>
-                          </Disclosure.Button>
-                        </h3>
-                        <Disclosure.Panel className="pt-6">
-                          <div className="space-y-4">
-                            {section.options.map((option, optionIdx) => (
-                              <div
-                                key={option.value}
-                                className="flex items-center"
-                              >
-                                <input
-                                  id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
-                                  defaultValue={option.value}
-                                  type="checkbox"
-                                  defaultChecked={option.checked}
-                                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                />
-                                <label
-                                  htmlFor={`filter-${section.id}-${optionIdx}`}
-                                  className="ml-3 text-sm text-gray-600"
-                                >
-                                  {option.label}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                ))}
-              </form>
+                    {subCategories.map((category) => (
+                      <li key={category.name}>
+                        <a href={category.href}>{category.name}</a>
+                      </li>
+                    ))}
+                  </ul>
 
+                  {filters.map((section) => (
+                    <Disclosure
+                      as="div"
+                      key={section.id}
+                      className="border-b border-gray-200 py-6"
+                    >
+                      {({ open }) => (
+                        <>
+                          <h3 className="-my-3 flow-root">
+                            <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                              <span className="font-medium text-gray-900">
+                                {section.name}
+                              </span>
+                              <span className="ml-6 flex items-center">
+                                {open ? (
+                                  <HiMinusSm
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <HiPlusSm
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                              </span>
+                            </Disclosure.Button>
+                          </h3>
+                          <Disclosure.Panel className="pt-6">
+                            <div className="space-y-4">
+                              {section.options.map((option, optionIdx) => (
+                                <div
+                                  key={option.value}
+                                  className="flex items-center"
+                                >
+                                  <input
+                                    id={`filter-${section.id}-${optionIdx}`}
+                                    name={`${section.id}[]`}
+                                    defaultValue={option.value}
+                                    type="checkbox"
+                                    defaultChecked={option.checked}
+                                    data-filter={option.dataFilter}
+                                    onClick={handleChange}
+                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  />
+                                  <label
+                                    htmlFor={`filter-${section.id}-${optionIdx}`}
+                                    className="ml-3 text-sm text-gray-600"
+                                  >
+                                    {option.label}
+                                  </label>
+                                </div>
+                              ))}
+                            </div>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  ))}
+
+                  {filters.map((section) => (
+                    <Disclosure
+                      as="div"
+                      key={section.id}
+                      className="border-b border-gray-200 py-6"
+                    >
+                      {({ open }) => (
+                        <>
+                          <h3 className="-my-3 flow-root">
+                            <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                              <span className="font-medium text-gray-900">
+                                {section.name}
+                              </span>
+                              <span className="ml-6 flex items-center">
+                                {open ? (
+                                  <HiMinusSm
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <HiPlusSm
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                              </span>
+                            </Disclosure.Button>
+                          </h3>
+                          <Disclosure.Panel className="pt-6">
+                            <Fragment>
+                              <input
+                                value={genre}
+                                fullWidth
+                                onChange={handleChange}
+                              />
+
+                              {movie.map((movie) => (
+                                <div class="flex items-center">
+                                  <input
+                                    id="filter-mobile-color-0"
+                                    name="color[]"
+                                    value={movie.genre}
+                                    type="checkbox"
+                                    onChange={handleChange}
+                                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  />
+                                  <label class="ml-3 min-w-0 flex-1 text-gray-500">
+                                    {movie.genre}
+                                  </label>
+                                </div>
+                              ))}
+                            </Fragment>
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  ))}
+                </form>
+              </div>
+              {/* ................NEW FILTERS............. */}
+
+              {/* ................NEW FILTERS............. */}
               {/* Product grid */}
-              <div className="lg:col-span-3">
+              <div className=" col-span-10 grid grid-cols-12 gap-x-8 gap-y-10">
                 {/* Replace with your content */}
-                <ItemAll />
+                {/* <ItemAll /> */}
+                {filteredGenre.map((movie, index) => (
+                  <div className="col-span-4">
+                    <div class="bg-gray-100 rounded-lg m-h-56  transform hover:translate-y-1 shadow-xl transition duration-300">
+                      <figure class="mb-3 pt-3">
+                        <img
+                          src={movie.image}
+                          alt=""
+                          class="h-36  ml-auto mr-auto"
+                        />
+                      </figure>
+                      <div class="rounded-b-lg px-4 py-3  flex flex-col text-center relative border-t border-red-100">
+                        <div class=" absolute top-0 left-2/4 -translate-x-1/2 -translate-y-1/2 fixed">
+                          <img
+                            class="block h-16 sm:h-20 rounded-full mx-auto border-2 border-red-200"
+                            src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <div className="mt-10">
+                            <h5 class="text-black text-xl font-bold leading-none capitalize my-3">
+                              genre: {movie.genre}
+                            </h5>
+                            <span class="text-sm text-gray-400 leading-5 line-clamp-3 ">
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Explicabo fugit odio rem vero natus, ducimus
+                              sint non quia dicta excepturi accusantium illum
+                              soluta inventore doloremque consequuntur. Alias at
+                              aliquid quos!
+                            </span>
+                          </div>
+                        </div>
+                        <div class="py-2 text-center border-t border-red-100 mt-2">
+                          <span class="inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2">
+                            {movie.title}
+                          </span>
+                          <span class="inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2">
+                            #travel
+                          </span>
+                          <span class="inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700">
+                            #winter
+                          </span>
+                        </div>
+                        {/* {filteredGenre.map((movie, index) => (
+                          <div class="py-2 text-center border-t border-red-100 mt-2">
+                            <h2 gutterBottom variant="h6" noWrap>
+                              title: {movie.title}
+                            </h2>
+                            <h4 gutterBottom variant="h6" noWrap>
+                              genre: {movie.genre}
+                            </h4>
+                          </div>
+                        ))} */}
+                        {/* {section
+                          .filter(
+                            (val) =>
+                              val.CategoryName === "MotorcycleParts" &&
+                              val.ProductQuantity !== 0
+                          )
+                          .map((val) => {
+                            return (
+                              <div>
+                                <div>
+                                  <div class="buyNowBtnDiv">
+                                    {localStorage.getItem("username") === "" ||
+                                    localStorage.length === 0 ? (
+                                      <div id="buyAddBtn"></div>
+                                    ) : (
+                                      <div id="buyAddBtn"></div>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })} */}
+                        {/* {section.category.map((option) => {
+                          <div class="py-2 text-center border-t border-red-100 mt-2">
+                            <span class="inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2">
+                              {section.label}
+                            </span>
+                            <span class="inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2">
+                              #travel
+                            </span>
+                            <span class="inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700">
+                              #winter
+                            </span>
+                          </div>;
+                        })} */}
+                        <Link to="/itemSlug">
+                          <div class="inline-flex items-center text-center my-2">
+                            {/* <div class="text-sm text-white font-light">Travel</div> */}
+                            <div class=" flex text-center text-red-300  mx-8">
+                              <span className="flex items-center text-yellow-500">
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaRegStar />
+                              </span>
+                            </div>
+
+                            <a href="/itemSlug">
+                              <button class="rounded-full bg-red-300 justify-between mx-8 text-white hover:bg-white hover:text-red-300 hover:shadow-xl focus:outline-none w-8 h-8 flex  transition duration-300 ">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  class="stroke-current m-auto"
+                                >
+                                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                              </button>
+                            </a>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

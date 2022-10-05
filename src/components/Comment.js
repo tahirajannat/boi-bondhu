@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { commentPostedTime } from "../utils";
 import AddComment from "./AddComment";
+import Button from "./Button";
 import CommentFooter from "./CommentFooter";
 import CommentHeader from "./CommentHeader";
 import CommentVotes from "./CommentVotes";
@@ -88,10 +89,14 @@ export default function Comment({
             />
           )}
           {editing && (
-            <button className="update-btn" onClick={updateComment}>
-              update
-            </button>
-          )}
+            <div>
+              <Button className="-btn" onClick={updateComment}>
+                update
+              </Button>
+              {/* <Button onClickBtn={() => console.log("hello")} /> */}
+            </div>
+          )}{" "}
+          shuno na ?? ????
         </div>
         <CommentFooter
           vote={vote}
@@ -134,6 +139,8 @@ export default function Comment({
           setDeleteModalState={setDeleteModalState}
         />
       )}
+
+      <Button onClickBtn={() => console.log("hello")} />
     </div>
   );
 }

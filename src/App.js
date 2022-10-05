@@ -15,6 +15,7 @@ import ItemSingle from "./components/ItemSingle";
 import Lend from "./components/Lend";
 import MainNav from "./components/MainNav";
 import Menu from "./components/Menu";
+import Pagination from "./components/Pagination";
 import Shop from "./components/Shop";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/chat" element={<ChatBox />} />
             <Route path="/comment" element={<CommentBox />} />
             <Route path="/dashboard" element={<DashboardUser />} />
+            <Route path="/pagination" element={<Pagination />} />
             <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
           </Routes>
         </Router>
