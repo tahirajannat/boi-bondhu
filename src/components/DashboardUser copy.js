@@ -1,16 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import createController from '../apiController/createController';
-import { UseUser } from '../contexts/AuthContext';
 
 export default function DashboardUser() {
-  const { user } = UseUser();
-
   const [image, setImage] = useState({ preview: '', raw: '' });
-  const [inputtedFormData, setInputtedFormData] = React.useState(null);
 
-  const handleFileChange = (e) => {
+  const handleChange = (e) => {
     if (e.target.files.length) {
       setImage({
         preview: URL.createObjectURL(e.target.files[0]),
@@ -18,106 +11,71 @@ export default function DashboardUser() {
       });
     }
   };
-  const handleInputChange = (e) => {
-    setInputtedFormData({
-      ...inputtedFormData,
 
-      // Trimming any whitespace
-      [e.target.name]: e.target.value.trim(),
-    });
-  };
-
-  //
-  const handleSubmit = async (e) => {
+  const handleUpload = async (e) => {
     e.preventDefault();
-    const usersBookInfo = {
-      uploadedBy: user?.userID,
-      bookTitle: inputtedFormData?.bookTitle,
-      bookAuthor: inputtedFormData?.bookAuthor,
-      bookDesc: inputtedFormData?.description,
-      bookCat: inputtedFormData?.category,
-      bookLocation: inputtedFormData?.area,
-      // images: image.raw,
-      // others: {
-      //   extraData: inputtedFormData?.bookTitle,
-      // },
-    };
+    console.log(
+      `🔥 ~ file: DashboardUser.js ~ line 32 ~ handleUpload ~ e`,
+      e.target
+    );
 
-    let formData = new FormData();
-    formData.append('image', image?.raw);
-    formData.append('uploadedBy', user?.userID);
-    formData.append('bookTitle', inputtedFormData?.bookTitle);
-    formData.append('bookAuthor', inputtedFormData?.bookAuthor);
-    formData.append('bookDesc', inputtedFormData?.description);
-    formData.append('bookCat', inputtedFormData?.category);
-    formData.append('bookLocation', inputtedFormData?.area);
+    const formData = new FormData();
+    formData.append('image', image.raw);
+    console.log(
+      `🔥 ~ file: DashboardUser.js ~ line 18 ~ handleUpload ~ formData`,
+      e.target
+    );
 
-    // formData.append('usersBookInfo', JSON.stringify(usersBookInfo));
-
-    // console.log(
-    //   `🔥 ~ file: DashboardUser.js ~ line 47 ~ handleSubmit ~ formData`,
-    //   [...formData]
-    // );
-
-    // const response = await fetch('http://localhost:3009/api/books', {
-    //   method: 'POST',
+    // await fetch("YOUR_URL", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
     //   body: formData,
     // });
-    const response = await createController.uploadBook(formData);
-    if (response?.status === 200) {
-      // setImage({
-      //   preview: '',
-      //   raw: '',
-      // });
-      // setInputtedFormData('');
-      toast(response?.message);
-    } else {
-      toast(`${response?.errorMessage}`);
-    }
   };
-  //
+
+  const handleSubmit = (event) => {
+    // Prevent default behavior
+    event.preventDefault();
+
+    const data = new FormData(event.target);
+    console.log(
+      `🔥 ~ file: DashboardUser.js ~ line 38 ~ handleSubmit ~ data`,
+      data
+    );
+    // Access FormData fields with `data.get(fieldName)`
+    // For example, converting to upper case
+    // data.set('username', data.get('username').toUpperCase());
+
+    // Do your Axios stuff here
+  };
 
   return (
+    // <form onSubmit={handleSubmit}>
     <div className='container mx-auto px-44  my-10 '>
       <div className='bg-white  shadow-lg border'>
         <div className='grid grid-cols-12 gap-2 py-6'>
           <div className='col-span-5 block border mx-8 py-4'>
             <label htmlFor='upload-button'>
               {image.preview ? (
-                <img
-                  src={image.preview}
-                  alt='dummy'
-                  width='300'
-                  height='150'
-                  style={{ cursor: 'pointer' }}
-                />
+                <img src={image.preview} alt='dummy' width='300' height='150' />
               ) : (
                 <>
-                  <div
-                    className='mx-8 border border-red-100'
-                    style={{ cursor: 'pointer' }}
-                  >
+                  <div className='mx-8 border border-red-100'>
                     <img
                       class='block mx-auto border-2 border-red-200'
-                      src='https://png2.cleanpng.com/sh/c39825bce5d813d81684355bf951ca4a/L0KzQYi4UcI5N5IAUJGAYUHnRLe3VsU3P2gATpC8OEK7RIO8UME2OWI9T6I7MUS2RYW5TwBvbz==/5a1d4f06567796.3828425015118702143542.png'
+                      src='https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4'
                       alt=''
-                      style={{ cursor: 'pointer' }}
                     />
                   </div>
-                  <h5
-                    className='bg-black text-white px-8 py-2 rounded-md mb-6 hover:shadow-lg text-center my-2'
-                    style={{ cursor: 'pointer' }}
-                  >
-                    Upload book image
-                  </h5>
+                  <h5 className='text-center my-2'>Upload your photo</h5>
                 </>
               )}
             </label>
           </div>
           <div className='col-span-7 text-left pr-8'>
-            <form onSubmit={handleSubmit}>
-              {/* <form onSubmit={handleSubmit}> */}
-              {/* <form> */}
+            <form>
               <div class='grid gap-6 mb-6 md:grid-cols-2'>
                 <div>
                   <label
@@ -129,28 +87,9 @@ export default function DashboardUser() {
                   <input
                     type='text'
                     id='bookTitle'
-                    name='bookTitle'
                     class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                     placeholder='Flowbite'
                     required=''
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div>
-                  <label
-                    for='company'
-                    class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
-                  >
-                    Book Author
-                  </label>
-                  <input
-                    type='text'
-                    id='bookAuthor'
-                    name='bookAuthor'
-                    class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                    placeholder='Rabindranath'
-                    required=''
-                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
@@ -163,11 +102,9 @@ export default function DashboardUser() {
                   <input
                     type='text'
                     id='category'
-                    name='category'
                     class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                     placeholder='Flowbite'
                     required=''
-                    onChange={handleInputChange}
                   />
                 </div>
                 {/* <div>
@@ -196,19 +133,17 @@ export default function DashboardUser() {
                   </label>
                   <select
                     id='area'
-                    name='area'
                     class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                    onChange={handleInputChange}
                   >
                     <option selected>Choose Your Area</option>
-                    <option value='Mirpu'>Mirpur</option>
-                    <option value='Dhanmondi'>Dhanmondi</option>
-                    <option value='Mohammadpur'>Mohammadpur</option>
-                    <option value='Bashundhora'>Bashundhora</option>
-                    <option value='Rampu'>Rampura</option>
-                    <option value='Badda'>Badda</option>
-                    <option value='Nilkhet'>Nilkhet</option>
-                    <option value='Agargao'>Agargao</option>
+                    <option value='MR'>Mirpur</option>
+                    <option value='Dh'>Dhanmondi</option>
+                    <option value='MH'>Mohammadpur</option>
+                    <option value='BH'>Bashundhora</option>
+                    <option value='RM'>Rampura</option>
+                    <option value='BD'>Badda</option>
+                    <option value='NL'>Nilkhet</option>
+                    <option value='AG'>Agargao</option>
                   </select>
                 </div>
                 {/* <div>
@@ -252,10 +187,8 @@ export default function DashboardUser() {
                   <textarea
                     class=' form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-white bg-clip-padding border border-solid border-gray-300 rounded transition  ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
                     id='description'
-                    name='description'
                     rows='3'
                     placeholder='Your message'
-                    onChange={handleInputChange}
                   ></textarea>
                 </div>
               </div>
@@ -264,13 +197,11 @@ export default function DashboardUser() {
                 type='file'
                 id='upload-button'
                 style={{ display: 'none' }}
-                onChange={handleFileChange}
+                onChange={handleChange}
               />
-
               <br />
               <button
-                // onClick={handleUpload}
-                type='submit'
+                onClick={handleUpload}
                 className='bg-black text-white px-8 py-2 rounded-md mb-6 hover:shadow-lg'
               >
                 Upload
@@ -280,5 +211,12 @@ export default function DashboardUser() {
         </div>
       </div>
     </div>
+    // </form>
   );
 }
+
+// <form onSubmit={this.handleSubmit}>
+//         <label htmlFor="username">Enter username</label>
+//         <input id="username" name="username" type="text" />
+//         <button>Send data!</button>
+//       </form>

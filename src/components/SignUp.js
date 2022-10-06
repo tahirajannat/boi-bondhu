@@ -3,7 +3,7 @@ import { FaAsterisk, FaUserAlt } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 import { RiCloseCircleFill } from 'react-icons/ri';
 import { toast } from 'react-toastify';
-import createController from '../apiController.js/createController';
+import createController from '../apiController/createController';
 
 export default function SignUp() {
   const [showModal, setShowModal] = useState(false);

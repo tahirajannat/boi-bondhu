@@ -1,44 +1,48 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
-import AllBooks from "./components/AllBooks";
-import Borrow from "./components/Borrow";
-import ChatBox from "./components/ChatBox";
-import CommentBox from "./components/CommentBox";
-import Contact from "./components/Contact";
-import AuthContext from "./components/contexts/AuthContext";
-import DashboardUser from "./components/DashboardUser";
-import Exchange from "./components/Exchange";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+import AllBooks from './components/AllBooks';
+import Borrow from './components/Borrow';
+import ChatBox from './components/ChatBox';
+import CommentBox from './components/CommentBox';
+import Contact from './components/Contact';
+import AuthContext, { UseUser } from './contexts/AuthContext';
+import DashboardUser from './components/DashboardUser';
+import Exchange from './components/Exchange';
 // import ChatBox from "./components/ChatBox";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import ItemSingle from "./components/ItemSingle";
-import Lend from "./components/Lend";
-import MainNav from "./components/MainNav";
-import Menu from "./components/Menu";
-import Pagination from "./components/Pagination";
-import Shop from "./components/Shop";
+import Footer from './components/Footer';
+import Home from './components/Home';
+import ItemSingle from './components/ItemSingle';
+import Lend from './components/Lend';
+import MainNav from './components/MainNav';
+import Menu from './components/Menu';
+import Pagination from './components/Pagination';
+import Shop from './components/Shop';
+import UserProfileBookList from './components/UserProfileBookList';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <AuthContext>
         <MainNav />
         <Router>
           <Menu />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/lend-books" element={<Lend />} />
-            <Route path="/borrow-books" element={<Borrow />} />
-            <Route path="/exchange-books" element={<Exchange />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/all-books" element={<AllBooks />} />
-            <Route path="/itemSlug" element={<ItemSingle />} />
-            <Route path="/chat" element={<ChatBox />} />
-            <Route path="/comment" element={<CommentBox />} />
-            <Route path="/dashboard" element={<DashboardUser />} />
-            <Route path="/pagination" element={<Pagination />} />
-            <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
+            <Route path='/' element={<Home />} />
+            <Route path='/lend-books' element={<Lend />} />
+            <Route path='/borrow-books' element={<Borrow />} />
+            <Route path='/exchange-books' element={<Exchange />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/shop' element={<Shop />} />
+            <Route path='/all-books' element={<AllBooks />} />
+            <Route path='/itemSlug' element={<ItemSingle />} />
+            <Route path='/chat' element={<ChatBox />} />
+            <Route path='/comment' element={<CommentBox />} />
+            <Route path='/dashboard' element={<DashboardUser />} />
+            <Route path='/pagination' element={<Pagination />} />
+            <Route path='/uploaded-books' element={<UserProfileBookList />} />
+            <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
           </Routes>
         </Router>
 

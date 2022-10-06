@@ -1,1 +1,2 @@
-export {commentPostedTime} from './time';
+export { commentPostedTime } from './time';
+export { setUserData } from './setUserData';

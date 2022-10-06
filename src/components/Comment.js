@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { commentPostedTime } from "../utils";
-import AddComment from "./AddComment";
-import Button from "./Button";
-import CommentFooter from "./CommentFooter";
-import CommentHeader from "./CommentHeader";
-import CommentVotes from "./CommentVotes";
-import DeleteModal from "./DeleteModal";
-import ReplyContainer from "./ReplyContainer";
-import "./Styles/Comment.scss";
+import { useEffect, useState } from 'react';
+import { commentPostedTime } from '../utils';
+import AddComment from './AddComment';
+import Button from './Button';
+import CommentFooter from './CommentFooter';
+import CommentHeader from './CommentHeader';
+import CommentVotes from './CommentVotes';
+import DeleteModal from './DeleteModal';
+import ReplyContainer from './ReplyContainer';
+import './Styles/Comment.scss';
 
 export default function Comment({
   commentData,
@@ -18,7 +18,7 @@ export default function Comment({
   setDeleteModalState,
 }) {
   const [replying, setReplying] = useState(false);
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState('');
   const [vote, setVoted] = useState(false);
   const [score, setScore] = useState(commentData.score);
   const [editing, setEditing] = useState(false);
@@ -32,7 +32,7 @@ export default function Comment({
 
   useEffect(() => {
     setTime(commentPostedTime(differenceInTime));
-    localStorage.setItem("voteState", vote);
+    localStorage.setItem('voteState', vote);
   }, [differenceInTime, vote]);
 
   const addReply = (newReply) => {
@@ -42,12 +42,12 @@ export default function Comment({
   };
 
   const updateComment = () => {
-    editComment(content, commentData.id, "comment");
+    editComment(content, commentData.id, 'comment');
     setEditing(false);
   };
 
   const deleteComment = (id, type) => {
-    const finalType = type !== undefined ? type : "comment";
+    const finalType = type !== undefined ? type : 'comment';
     const finalId = id !== undefined ? id : commentData.id;
     commentDelete(finalId, finalType, commentData.id);
     setDeleting(false);
@@ -56,10 +56,10 @@ export default function Comment({
   return (
     <div
       className={`comment-container ${
-        commentData.replies[0] !== undefined ? "reply-container-gap" : ""
+        commentData.replies[0] !== undefined ? 'reply-container-gap' : ''
       }`}
     >
-      <div className="comment">
+      <div className='comment'>
         <CommentVotes
           vote={vote}
           setVoted={setVoted}
@@ -68,7 +68,7 @@ export default function Comment({
           updateScore={updateScore}
           commentData={commentData}
         />
-        <div className="comment--body">
+        <div className='comment--body'>
           <CommentHeader
             commentData={commentData}
             setReplying={setReplying}
@@ -78,10 +78,10 @@ export default function Comment({
             time={time}
           />
           {!editing ? (
-            <div className="comment-content">{commentData.content}</div>
+            <div className='comment-content'>{commentData.content}</div>
           ) : (
             <textarea
-              className="content-edit-box"
+              className='content-edit-box'
               value={content}
               onChange={(e) => {
                 setContent(e.target.value);
@@ -90,13 +90,12 @@ export default function Comment({
           )}
           {editing && (
             <div>
-              <Button className="-btn" onClick={updateComment}>
+              <Button className='-btn' onClick={updateComment}>
                 update
               </Button>
               {/* <Button onClickBtn={() => console.log("hello")} /> */}
             </div>
-          )}{" "}
-          shuno na ?? ????
+          )}{' '}
         </div>
         <CommentFooter
           vote={vote}
@@ -109,12 +108,12 @@ export default function Comment({
           setDeleting={setDeleting}
           setDeleteModalState={setDeleteModalState}
           setEditing={setEditing}
-        />{" "}
+        />{' '}
       </div>
 
       {replying && (
         <AddComment
-          buttonValue={"reply"}
+          buttonValue={'reply'}
           addComments={addReply}
           replyingTo={commentData.username}
         />
@@ -140,7 +139,7 @@ export default function Comment({
         />
       )}
 
-      <Button onClickBtn={() => console.log("hello")} />
+      <Button onClickBtn={() => console.log('hello')} />
     </div>
   );
 }
