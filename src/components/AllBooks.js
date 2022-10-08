@@ -133,10 +133,10 @@ export default function Example() {
 
   const getBooks = async () => {
     const response = await getController.getBooks();
-    console.log(
-      `🔥 ~ file: Login.js ~ line 73 ~ handleFormSubmit1 ~ response`,
-      await response?.data?.length
-    );
+    // console.log(
+    //   `🔥 ~ file: Login.js ~ line 73 ~ handleFormSubmit1 ~ response`,
+    //   await response?.data?.length
+    // );
     if ((await response?.data?.length) > 0) {
       setAllBooks(response?.data);
       setTimeout(() => {
@@ -532,12 +532,12 @@ export default function Example() {
                               />
                             </figure>
                             <div class='rounded-b-lg px-4 py-3  flex flex-col text-center relative border-t border-red-100'>
-                              <div class=' absolute top-0 left-2/4 -translate-x-1/2 -translate-y-1/2 fixed'>
+                              {/* <div class=' absolute top-0 left-2/4 -translate-x-1/2 -translate-y-1/2 fixed'>
                                 <img
                                   src='https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png'
                                   alt='Setting User Avatar In Specific Size, Without Breaking - Avatar Png@pngkey.com'
                                 />
-                              </div>
+                              </div> */}
                               <div>
                                 <div className='mt-10'>
                                   <h5 class='text-black text-xl font-bold leading-none capitalize my-3'>

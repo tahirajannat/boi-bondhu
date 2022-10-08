@@ -8,8 +8,7 @@ export default function Button({ children, onClickBtn }) {
         type="button"
         onClick={onClickBtn}
       >
-        {/* {children} */}
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        {children}
       </button>
     </div>
   );

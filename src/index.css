@@ -158,3 +158,13 @@ select.classic:focus {
     left: 0;
   }
 }
+
+/** Hide the `details` chevron icon in Firefox Browsers */
+summary {
+  list-style-type: none;
+}
+
+/** Hide the `details` chevron icon in Safari Browsers */
+summary::-webkit-details-marker {
+  display: none;
+}
