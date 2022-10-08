@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@trendyol-js/react-carousel": "^3.0.0",
     "axios": "^1.0.0",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "lottie-react": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,7 +19,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.8",
     "sass": "^1.54.8",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^3.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,5 +50,8 @@
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
+  },
+  "browser": {
+    "crypto": false
   }
 }

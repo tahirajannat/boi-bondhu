@@ -5,6 +5,7 @@ const apiEndpoints = {
   auth: `api/auth`,
   user: `api/user`,
   book: `api/books`,
+  options: `api/options`,
 };
 const requestOptions = {
   method: 'GET',
@@ -123,11 +124,13 @@ const getController = {
 
   getBooks: async () => await getData(false, apiEndpoints?.book),
 
+  getOptions: async () => await getData(false, apiEndpoints?.options),
+
   getSingleBookInfo: async (bookID) =>
     await getDataQueryParams(bookID, apiEndpoints?.book),
 };
 
 const printResponse = (data, ...rest) => {
-  console.log(`🔥 ~returned response : `, data, rest);
+  console.log(`🔥 ~returned response : `, data);
 };
 export default getController;

@@ -40,22 +40,13 @@ function App() {
             <Route path="/chat" element={<Chat />} />
             <Route path="/comment" element={<CommentBox />} />
             <Route path="/dashboard" element={<DashboardUser />} />
-            <Route path="/book_list" element={<BookList />} />
             <Route path="/pagination" element={<Pagination />} />
             <Route path="/uploaded-books" element={<UserProfileBookList />} />
+            <Route path="/book_list" element={<BookList />} />
             <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
           </Routes>
         </Router>
 
-        {/* <Login /> */}
-        {/* <Slider />
-      <BottomNav />
-      <ItemsCard />
-      <Testimonial /> */}
-        {/* <Shop /> */}
-        {/* <ItemSingle />
-      <ChatBox /> */}
-        {/* <ProductGrid /> */}
         <Footer />
       </AuthContext>
 

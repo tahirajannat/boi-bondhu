@@ -472,7 +472,7 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <main class="mx-auto max-w-7xl px-4 ">
         <section aria-labelledby="products-heading" class="pt-6 pb-24">
           <form class="hidden lg:block">
             <h3 class="sr-only">Categories</h3>

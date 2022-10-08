@@ -10,7 +10,7 @@ const apiEndpoints = {
 const createData = async (inputParams, apiEndpoint, uploadType) => {
   console.log(
     `🔥 ~ file: createController.js ~ line 11 ~ createData ~ inputParams`,
-    [...inputParams]
+    { ...inputParams }
   );
   // uploadType = 'file' / 'text'
   const requestOptions = {
@@ -28,7 +28,7 @@ const createData = async (inputParams, apiEndpoint, uploadType) => {
   try {
     const response = await fetch(
       `${apiURL}/${apiEndpoint}`,
-      uploadType === 'text' ? requestOptions : requestOptionsNoHeader
+      uploadType === 'json' ? requestOptions : requestOptionsNoHeader
     );
     const data = await response.json();
     if (await data) {
@@ -49,7 +49,7 @@ const createController = {
   sayHi: (param) => toast('Hello ' + param),
 
   signUp: async (inputParams) =>
-    await createData(inputParams, apiEndpoints?.auth),
+    await createData(inputParams, apiEndpoints?.auth, 'json'),
 
   uploadBook: async (inputParams) =>
     await createData(inputParams, apiEndpoints?.book),

@@ -4,6 +4,7 @@ import { HiMail } from 'react-icons/hi';
 import { RiCloseCircleFill } from 'react-icons/ri';
 import { toast } from 'react-toastify';
 import createController from '../apiController/createController';
+import { passwordEncryption } from '../utils';
 
 export default function SignUp() {
   const [showModal, setShowModal] = useState(false);
@@ -12,11 +13,13 @@ export default function SignUp() {
   const [userPass, setUserPass] = useState(null);
 
   const handleSignUp = async () => {
-    const response = await createController.signUp({
+    const input = {
       username: userName,
       email: userEmail,
-      password: userPass,
-    });
+      password: await passwordEncryption(userPass),
+    };
+
+    const response = await createController.signUp(input);
     if (response?.status === 'Ok') {
       toast(`Successfully SignedUP`);
     } else {
