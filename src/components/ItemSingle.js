@@ -74,7 +74,7 @@ export default function ItemSingle() {
                       </a>
                     ) : null}
                     <button onClick={() => setShow(!show)}>
-                      {!show ? " Say Hi to the woner" : null}
+                      {!show ? " Say Hi to the owner" : null}
                     </button>
                   </span>
                 </div>
