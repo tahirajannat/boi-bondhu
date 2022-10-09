@@ -73,3 +73,45 @@ export const Reviews = [
     time: "August 22, 2022",
   },
 ];
+export const ChatDataUsers = [
+  {
+    short_name: "H",
+    full_name: "Henry Boyd",
+  },
+  {
+    short_name: "M",
+    full_name: "Marta Curtis",
+  },
+  {
+    short_name: "P",
+    full_name: "Philip Tucker",
+  },
+  {
+    short_name: "C",
+    full_name: "Christine Reid",
+  },
+  {
+    short_name: "J",
+    full_name: "Jerry Guzman",
+  },
+];
+export const ChatDataA = [
+  {
+    short_name: "A",
+    message: "Hey How are you today?",
+  },
+  {
+    short_name: "A",
+    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+  },
+];
+export const ChatDataB = [
+  {
+    short_name: "B",
+    message: "I'm ok what about you?",
+  },
+  {
+    short_name: "B",
+    message: "Lorem ipsum dolor sit, amet consectetur adipisicing. ?",
+  },
+];

@@ -49,8 +49,6 @@ function App() {
 
         <Footer />
       </AuthContext>
-
-      {/* <TestimonialSlider /> */}
     </div>
   );
 }

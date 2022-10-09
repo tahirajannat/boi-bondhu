@@ -13,7 +13,6 @@ export default function Footer() {
       <div class="bg-gray-700 pt-5">
         <div class="max-w-screen-lg px-4 sm:px-6 text-gray-800 sm:grid md:grid-cols-4 sm:grid-cols-2 mx-auto">
           <div class="p-5 text-left">
-            {/* <h3 class="font-bold text-xl text-indigo-600">Componentity</h3> */}
             <a href="#about" className=" ">
               <img src={logo} alt="logo" className="max-w-full h-14 " />
             </a>
@@ -95,10 +94,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* <a href="https://componentity.com" target="_blank" class="block">
-  <img src="http://codenawis.com/componentity/wp-content/uploads/2020/08/logo-componentity-%E2%80%93-9.png" class="w-48 mx-auto my-5">
-</a> */}
     </footer>
   );
 }

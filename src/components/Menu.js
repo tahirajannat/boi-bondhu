@@ -27,14 +27,8 @@ export default function Menu(props) {
             <a href="/contact" className=" relative mx-4">
               Contact Us
             </a>
-            <a href="/shop" className=" relative">
-              Shop
-            </a>
             <a href="/all-books" className=" relative">
               All Books
-            </a>
-            <a href="/pagination" className=" relative">
-              pagination
             </a>
           </ul>
         </nav>
