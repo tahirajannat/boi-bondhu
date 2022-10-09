@@ -17,7 +17,7 @@ export default function Testimonial() {
             </p>
           </div>
           <div>
-            <a href="/dashboard">
+            <a href="/table">
               <button class="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-purple text-purple hover:bg-purple hover:text-red-300">
                 Message
               </button>

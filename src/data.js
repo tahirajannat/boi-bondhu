@@ -115,3 +115,41 @@ export const ChatDataB = [
     message: "Lorem ipsum dolor sit, amet consectetur adipisicing. ?",
   },
 ];
+export const TableData = [
+  {
+    user_id: "1",
+    book_title: "Book Title 1",
+    book_author: "Book Author 1",
+    book_category: "Book Category 1",
+    book_description: "Book Description 1",
+    // location: "mirpur",
+    // time: "10-09-22",
+  },
+  {
+    id: "2",
+    book_title: "Book Title 2",
+    book_author: "Book Author 2",
+    book_category: "Book Category 2",
+    book_description: "Book Description 2",
+    // location: "Book Location",
+    // time: "8-09-22",
+  },
+  {
+    id: "3",
+    book_title: "Book Title 3",
+    book_author: "Book Author 3",
+    book_category: "Book Category 3",
+    book_description: "Book Description 3",
+    // location: "mohammadpur",
+    // time: "11-09-22",
+  },
+  {
+    id: "4",
+    book_title: "Book Title 4",
+    book_author: "Book Author 4",
+    book_category: "Book Category 4",
+    book_description: "Book Description 4",
+    // location: "Mohammadpur",
+    // time: "11-09-22",
+  },
+];

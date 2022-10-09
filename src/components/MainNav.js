@@ -136,14 +136,14 @@ export default function MainNav(props) {
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                 role="menuitem"
                               >
-                                Create Book Post
+                                Upload Books
                               </a>
                               <a
                                 href="/book_list"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                 role="menuitem"
                               >
-                                All Book List
+                                Uploaded Book List
                               </a>
 
                               <button
