@@ -20,29 +20,32 @@ export default function BookCard({
         <>
             {items.map((item) => (
                 <div class='shadow-lg mb-8 '>
-                    <div className='bg-gray-100 p-4'>
+                    <div className='bg-slate-100 border-b p-4 relative '>
                         <img
                             alt='person capturing an image'
                             src={item.image}
                             class='focus:outline-none w-full h-44 object-contain'
                         />
+                        <div class='bg-yellow-200 py-1.5 px-4 rounded-[2px] absolute top-2 right-2'>
+                            <p class='focus:outline-none text-xs text-yellow-700'>
+                                Featured
+                            </p>
+                        </div>
+                        <div className='absolute top-2 left-2'>
+                            <FaRegBookmark />
+                        </div>
                     </div>
                     <div class='bg-white'>
-                        <div class='flex items-center justify-between px-4 pt-4'>
+                        {/* <div class='flex items-center justify-between px-4 pt-4'>
                             <div>
-                                {/* <img
-                                    class='dark:bg-white focus:outline-none'
-                                    src='https://tuk-cdn.s3.amazonaws.com/can-uploader/4-by-2-col-grid-svg1.svg'
-                                    alt='bookmark'
-                                /> */}
                                 <FaRegBookmark />
                             </div>
-                            <div class='bg-yellow-200 py-1.5 px-6 rounded-full'>
+                            <div class='bg-yellow-200 py-1.5 px-4 rounded-[2px]'>
                                 <p class='focus:outline-none text-xs text-yellow-700'>
                                     Featured
                                 </p>
                             </div>
-                        </div>
+                        </div> */}
                         <div class='px-4 pt-4 pb-2'>
                             <div class='flex items-center'>
                                 <h2 class='focus:outline-none text-lg text-gray-800 font-semibold'>
