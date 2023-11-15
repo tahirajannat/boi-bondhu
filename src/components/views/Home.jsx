@@ -17,7 +17,7 @@ export default function Home() {
                     <h1 class='text-xl text-black font-bold pb-2'>
                         Featured Books
                     </h1>
-                    <button className='px-4 py-2 border border-yellow-600'>
+                    <button className='px-4 py-1.5 rounded-[4px] border border-yellow-600 hover:bg-slate-100 duration-75 transition-all '>
                         View All
                     </button>
                 </div>
@@ -35,7 +35,7 @@ export default function Home() {
                     <h1 class='text-xl text-black font-bold pb-2'>
                         All Listed Books
                     </h1>
-                    <button className='px-4 py-2 border border-yellow-600'>
+                    <button className='px-4 py-1.5 rounded-[4px] border border-yellow-600 hover:bg-slate-100 duration-75 transition-all '>
                         View All
                     </button>
 

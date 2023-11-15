@@ -60,7 +60,7 @@ export const books = [
         // authorName: 'Anonymous_1',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0NSx3OvVpnA61GB2FNDpgA-IOf1BLqtlmWUO4Va2EP1r1jHa8E0RAJyudeWDtr1XOgg&usqp=CAU',
+        image: 'https://images-na.ssl-images-amazon.com/images/I/91JZtTIJlnL.jpg',
         published: 'August 22, 2022',
         category: 'travel',
         tag: 'borrow',
@@ -72,7 +72,7 @@ export const books = [
         // authorName: 'Anonymous_1',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0NSx3OvVpnA61GB2FNDpgA-IOf1BLqtlmWUO4Va2EP1r1jHa8E0RAJyudeWDtr1XOgg&usqp=CAU',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlPAKAw8LGLEr1gw_yFIzDbmKcfar5_mkA36TVv8ojgZU2IUgOKGM2Y2v_9QWhm7OltYo&usqp=CAU',
         published: 'August 22, 2022',
         category: 'travel',
         tag: 'lend',
@@ -84,7 +84,7 @@ export const books = [
         // authorName: 'Anonymous_1',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0NSx3OvVpnA61GB2FNDpgA-IOf1BLqtlmWUO4Va2EP1r1jHa8E0RAJyudeWDtr1XOgg&usqp=CAU',
+        image: 'https://images-na.ssl-images-amazon.com/images/I/51KspIil-GL._SX317_BO1,204,203,200_.jpg',
         published: 'August 22, 2022',
         category: 'travel',
         tag: 'exchange',
