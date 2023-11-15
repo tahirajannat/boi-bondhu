@@ -1,8 +1,12 @@
 import React from 'react';
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import {
+    FaFacebookF,
+    FaLinkedinIn,
+    FaRegBookmark,
+    FaTwitter,
+} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { productData } from '../../utility/data';
-import { FaRegBookmark } from 'react-icons/fa';
 
 export default function ProductCard() {
     return (
@@ -13,28 +17,30 @@ export default function ProductCard() {
                         {productData.slice(0, 4).map((index, key) => (
                             <div class=' col-span-3 '>
                                 <div class='bg-gray-100 rounded-lg m-h-56  transform hover:translate-y-1 shadow-xl transition duration-300'>
-                                    <figure class='mb-3 pt-3'>
+                                    <figure class='mb-3 pt-3 relative'>
                                         <img
                                             src={index.image}
                                             alt=''
-                                            class='h-36  ml-auto mr-auto'
+                                            class='h-44  ml-auto mr-auto'
                                         />
+
+                                        <FaRegBookmark className='absolute top-4 left-4 cursor-pointer hover:text-yellow-500 duration-75 transition-all' />
                                     </figure>
                                     <div class='rounded-b-lg px-4 py-3  flex flex-col text-center relative border-t border-red-100'>
-                                        <div class=' absolute top-0 left-2/4 -translate-x-1/2 -translate-y-1/2 fixed'>
+                                        <div class=' absolute top-0 left-2/4 -translate-x-1/2 -translate-y-1/2 '>
                                             <img
                                                 class='block h-16 sm:h-20 rounded-full mx-auto border-2 border-red-200'
                                                 src='https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4'
                                                 alt=''
                                             />
-                                            <FaRegBookmark />
                                         </div>
                                         <div>
                                             <div className='mt-10'>
                                                 <h5 class='text-black text-xl font-bold leading-none capitalize my-3'>
                                                     Book Title
                                                 </h5>
-                                                <span class='text-sm text-gray-400 leading-5 line-clamp-3 '>
+
+                                                <p class='text-sm text-gray-400 leading-5 line-clamp-2 '>
                                                     Lorem ipsum dolor sit amet
                                                     consectetur adipisicing
                                                     elit. Explicabo fugit odio
@@ -44,8 +50,14 @@ export default function ProductCard() {
                                                     inventore doloremque
                                                     consequuntur. Alias at
                                                     aliquid quos!
-                                                </span>
+                                                </p>
                                             </div>
+                                            {/* <div className='flex justify-between'>
+                                                <FaRegBookmark />
+                                                <button className='px-2 py-1 border border-yellow-600'>
+                                                    Details
+                                                </button>
+                                            </div> */}
                                         </div>
                                         <div class='py-2 text-center border-t border-red-100 mt-2'>
                                             <span class='inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>

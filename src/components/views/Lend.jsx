@@ -1,86 +1,157 @@
 import React from 'react';
-import { productData } from '../../utility/data';
+import { books } from '../../utility/data';
+import BookCard from '../common/BookCard';
+import Sidebar from '../views/Sidebar';
 
 export default function Lend() {
     return (
         <div>
-            <div class=' items-left bg-white '>
-                <div class='container mx-auto py-20'>
-                    <div class='w-full mb-10 text-left'>
-                        <h1 class='text-3xl text-gray-700 font-bold'>
-                            Lend Your Books to Help Others
-                        </h1>
-                    </div>
-                    <div className='grid grid-cols-12 gap-4'>
-                        {productData.slice(0, 4).map((index, key) => (
-                            <div class=' col-span-3 '>
-                                <div class='bg-indigo-100 rounded-lg m-h-56  transform hover:translate-y-2 hover:shadow-xl transition duration-300'>
-                                    <figure class='mb-3 pt-3'>
-                                        <img
-                                            src={index.image}
-                                            alt=''
-                                            class='h-52  ml-auto mr-auto'
-                                        />
-                                    </figure>
-                                    <div class='rounded-b-lg px-4 py-3 bg-gray-600 flex flex-col text-left'>
-                                        <div>
-                                            <h5 class='text-white text-xl font-bold leading-none'>
-                                                iPhone 11
-                                            </h5>
-                                            {/* <span class="text-xs text-gray-400 leading-none">
-                      Just the right amount of everything.
-                    </span> */}
-                                        </div>
-                                        <div class='flex items-center mt-2'>
-                                            <div class='text-sm text-white font-light'>
-                                                Travel
-                                            </div>
-                                            <button class='rounded-md bg-yellow-600 text-white hover:bg-white hover:text-purple-900 hover:shadow-xl focus:outline-none px-4 py-2 flex ml-auto transition duration-300'>
-                                                Lend Books
-                                            </button>
-                                            {/* <Router>
-                      <Link to="/itemSlug">
-                        <button class="rounded-full bg-yellow-600 text-white hover:bg-white hover:text-purple-900 hover:shadow-xl focus:outline-none w-8 h-8 flex ml-auto transition duration-300">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="stroke-current m-auto"
-                          >
-                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                          </svg>
-                        </button>
-                      </Link>
-                      <Routes>
-                        <Route path="/itemSlug" element={<ItemSingle />} />
-                      </Routes>
-                    </Router> */}
-                                        </div>
-                                        <div class='py-2 text-left border-t mt-2'>
-                                            <span class='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
-                                                #photography
-                                            </span>
-                                            <span class='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
-                                                #travel
-                                            </span>
-                                            <span class='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700'>
-                                                #winter
-                                            </span>
-                                        </div>
+            {/* <ItemAll /> */}
+
+            <main class='container  mx-auto px-10 text-right'>
+                <div class=' grid grid-cols-1 border-b border-gray-200 pt-24 pb-6'>
+                    {/* <h1 class="text-4xl font-bold tracking-tight text-gray-900">
+            New Arrivals
+          </h1> */}
+                    <div class='text-right col-span-1'>
+                        <div class=' items-center'>
+                            <div class='relative inline-block text-left'>
+                                <div>
+                                    <button
+                                        type='button'
+                                        class='group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900'
+                                        id='menu-button'
+                                        aria-expanded='false'
+                                        aria-haspopup='true'
+                                    >
+                                        Sort
+                                        <svg
+                                            class='-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500'
+                                            xmlns='http://www.w3.org/2000/svg'
+                                            viewBox='0 0 20 20'
+                                            fill='currentColor'
+                                            aria-hidden='true'
+                                        >
+                                            <path
+                                                fill-rule='evenodd'
+                                                d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'
+                                                clip-rule='evenodd'
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div
+                                    class='absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none'
+                                    role='menu'
+                                    aria-orientation='vertical'
+                                    aria-labelledby='menu-button'
+                                    tabindex='-1'
+                                >
+                                    <div class='py-1' role='none'>
+                                        <a
+                                            href='#'
+                                            class='font-medium text-gray-900 block px-4 py-2 text-sm'
+                                            role='menuitem'
+                                            tabindex='-1'
+                                            id='menu-item-0'
+                                        >
+                                            Most Popular
+                                        </a>
+
+                                        <a
+                                            href='#'
+                                            class='text-gray-500 block px-4 py-2 text-sm'
+                                            role='menuitem'
+                                            tabindex='-1'
+                                            id='menu-item-1'
+                                        >
+                                            Best Rating
+                                        </a>
+
+                                        <a
+                                            href='#'
+                                            class='text-gray-500 block px-4 py-2 text-sm'
+                                            role='menuitem'
+                                            tabindex='-1'
+                                            id='menu-item-2'
+                                        >
+                                            Newest
+                                        </a>
+
+                                        <a
+                                            href='#'
+                                            class='text-gray-500 block px-4 py-2 text-sm'
+                                            role='menuitem'
+                                            tabindex='-1'
+                                            id='menu-item-3'
+                                        >
+                                            Price: Low to High
+                                        </a>
+
+                                        <a
+                                            href='#'
+                                            class='text-gray-500 block px-4 py-2 text-sm'
+                                            role='menuitem'
+                                            tabindex='-1'
+                                            id='menu-item-4'
+                                        >
+                                            Price: High to Low
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        ))}
+
+                            <button
+                                type='button'
+                                class='-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7'
+                            >
+                                <span class='sr-only'>View grid</span>
+                                <svg
+                                    class='h-5 w-5'
+                                    aria-hidden='true'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 20 20'
+                                    fill='currentColor'
+                                >
+                                    <path
+                                        fill-rule='evenodd'
+                                        d='M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z'
+                                        clip-rule='evenodd'
+                                    />
+                                </svg>
+                            </button>
+                            <button
+                                type='button'
+                                class='-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden'
+                            >
+                                <span class='sr-only'>Filters</span>
+
+                                <svg
+                                    class='h-5 w-5'
+                                    aria-hidden='true'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 20 20'
+                                    fill='currentColor'
+                                >
+                                    <path
+                                        fill-rule='evenodd'
+                                        d='M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z'
+                                        clip-rule='evenodd'
+                                    />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div class='grid grid-cols-1 gap-4 lg:grid-cols-5'>
+                    <Sidebar />
+                    <div class='lg:col-span-4 grid grid-cols-3 gap-4'>
+                        <BookCard items={books} />
+                    </div>
+                </div>
+            </main>
         </div>
     );
 }

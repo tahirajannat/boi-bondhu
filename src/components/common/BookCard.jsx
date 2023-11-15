@@ -27,12 +27,12 @@ export default function BookCard({
                             class='focus:outline-none w-full h-44 object-contain'
                         />
                         <div class='bg-yellow-200 py-1.5 px-4 rounded-[2px] absolute top-2 right-2'>
-                            <p class='focus:outline-none text-xs text-yellow-700'>
+                            <p class='focus:outline-none text-xs text-yellow-900'>
                                 Featured
                             </p>
                         </div>
                         <div className='absolute top-2 left-2'>
-                            <FaRegBookmark />
+                            <FaRegBookmark className=' cursor-pointer hover:text-yellow-500 duration-75 transition-all' />
                         </div>
                     </div>
                     <div class='bg-white'>

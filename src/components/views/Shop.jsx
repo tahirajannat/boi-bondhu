@@ -1,5 +1,6 @@
 import React from 'react';
-import ItemAll from '../common/ItemAll';
+import { books } from '../../utility/data';
+import BookCard from '../common/BookCard';
 import Sidebar from '../views/Sidebar';
 
 export default function Shop() {
@@ -144,10 +145,10 @@ export default function Shop() {
                     </div>
                 </div>
 
-                <div class='grid grid-cols-1 gap-4 lg:grid-cols-4'>
+                <div class='grid grid-cols-1 gap-4 lg:grid-cols-5'>
                     <Sidebar />
-                    <div class='lg:col-span-3'>
-                        <ItemAll />
+                    <div class='lg:col-span-4 grid grid-cols-3 gap-4'>
+                        <BookCard items={books} />
                     </div>
                 </div>
             </main>
