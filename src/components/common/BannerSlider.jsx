@@ -41,20 +41,16 @@ export default function BannerSlider() {
             >
                 {heroBanner.map((item) => (
                     <SwiperSlide>
-                        <img
-                            src={item.src}
-                            alt=''
-                            srcset=''
-                            className='h-[600px]'
-                        />
+                        <img src={item.src} alt='' srcset='' className='' />
                     </SwiperSlide>
                 ))}
-                <div className=' container px-20 w-[1140px]'>
+                <div className=' container mr-6'>
                     <div className='swiper-custom-button-prev'>
-                        <HiArrowLongLeft className='text-3xl text-[#ca8a04' />
+                        {/* <HiArrowLongRight className='text-3xl text-[#ca8a04 p-1' /> */}
+                        <HiArrowLongLeft className='text-3xl text-[#ca8a04] p-1 bg-white shadow-sm rounded-l-sm' />
                     </div>
                     <div className='swiper-custom-button-next'>
-                        <HiArrowLongRight className='text-3xl text-[#ca8a04] ' />
+                        <HiArrowLongRight className='text-3xl text-[#ca8a04 p-1 bg-white shadow-sm rounded-r-sm' />
                     </div>
                     <div className='autoplay-progress' slot='container-end'>
                         <svg

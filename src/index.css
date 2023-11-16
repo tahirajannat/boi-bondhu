@@ -177,7 +177,7 @@ select.classic:focus {
 .swiper-slide img {
     display: block;
     width: 100%;
-    height: 800px;
+    height: 100%;
     object-fit: cover;
     object-position: center center;
 }
@@ -224,8 +224,9 @@ select.classic:focus {
 .swiper-custom-button-prev,
 .swiper-custom-button-next {
     position: absolute;
-    top: var(--swiper-navigation-top-offset, 50%);
-    width: calc(var(--swiper-navigation-size) / 10 * 27);
+    /* top: var(--swiper-navigation-top-offset, 50%); */
+    bottom: 16px;
+    width: 50px;
     height: var(--swiper-navigation-size);
     margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
     z-index: 10;
@@ -239,7 +240,7 @@ select.classic:focus {
     left: 0;
 }
 .swiper-custom-button-next {
-    right: 0;
+    left: 30px;
 }
 .productSwiper .swiper-custom-button-prev,
 .productSwiper .swiper-custom-button-next {
