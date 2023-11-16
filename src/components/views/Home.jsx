@@ -11,7 +11,7 @@ import ListedCatecoryItem from './home/ListedCatecoryItem';
 
 export default function Home() {
     return (
-        <div className='my-8'>
+        <div className='my-8 container mx-auto px-20'>
             <div className='grid grid-cols-12 gap-6 container mx-auto'>
                 <div className=' col-span-3'>
                     <SideNav />
@@ -32,7 +32,7 @@ export default function Home() {
             <div className='container mx-auto my-16'>
                 <TitleSection title={'Featured Books'} />
                 <div className='grid grid-cols-4 gap-6'>
-                    <BookCard items={books} endIndex={5} />
+                    <BookCard items={books} endIndex={4} />
                 </div>
             </div>
             <div className='container mx-auto my-16'>
@@ -45,7 +45,7 @@ export default function Home() {
                     {/* <ProductCard /> */}
                 </div>
             </div>
-
+            {/* <Filter /> */}
             {/* <ItemsCard /> */}
             {/* <Testimonial /> */}
         </div>

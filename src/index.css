@@ -65,10 +65,10 @@ nav ul li {
   text-transform: normal;
 } */
 .menu a.active,
-a:hover {
+/* a:hover {
     color: #ca8a04;
     transition: 0.5s;
-}
+} */
 .menu a::before {
     content: '';
     width: 100%;

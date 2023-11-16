@@ -40,8 +40,25 @@ export default function BannerSlider() {
                 className='mySwiper '
             >
                 {heroBanner.map((item) => (
-                    <SwiperSlide>
+                    <SwiperSlide className='bg-product-bg-1'>
                         <img src={item.src} alt='' srcset='' className='' />
+                        <div className='absolute top-1/2 left-0 -translate-y-1/2'>
+                            <div class='w-3/4 mb-10 text-left my-8 p-8 '>
+                                <h1 className='text-yellow-600 font-bold text-lg'>
+                                    With Boibondhu
+                                </h1>
+                                <h2 class='text-6xl text-white font-normal pb-2   leading-tight'>
+                                    {item.title}
+
+                                    {/* <span className='text-yellow-500'>
+                                        with boibondhu
+                                    </span> */}
+                                </h2>
+                                <button className='mt-8 px-4 py-2 rounded-[4px]  text-white bg-teal-600 border border-teal-600 hover:bg-slate-100 hover:text-teal-600 duration-75 transition-all '>
+                                    Register Now
+                                </button>
+                            </div>
+                        </div>
                     </SwiperSlide>
                 ))}
                 <div className=' container mr-6'>

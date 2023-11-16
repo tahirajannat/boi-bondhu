@@ -48,8 +48,8 @@ function classNames(...classes) {
 
 export default function SideNav() {
     return (
-        <nav className='bg-white shadow-sm px-4 py-6' aria-label='Sidebar'>
-            <div className='text-xs font-bold leading-6 text-teal-600 text-left mb-4'>
+        <nav className='bg-white shadow-sm px-4 py-3' aria-label='Sidebar'>
+            <div className='text-sm font-bold leading-6 text-teal-600 text-left mb-3'>
                 Projects
             </div>
             <ul role='list' className='-mx-2 space-y-1 block'>
@@ -59,16 +59,16 @@ export default function SideNav() {
                             href={item.href}
                             className={classNames(
                                 item.current
-                                    ? 'bg-gray-50 text-indigo-600'
-                                    : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                    ? 'bg-gray-50 text-teal-600 hover:text-teal-700 '
+                                    : 'text-gray-700 hover:text-teal-700 hover:bg-gray-50',
                                 'group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                             )}
                         >
                             <item.icon
                                 className={classNames(
                                     item.current
-                                        ? 'text-indigo-600'
-                                        : 'text-gray-400 group-hover:text-indigo-600',
+                                        ? 'text-teal-600'
+                                        : 'text-gray-400 group-hover:text-teal-600',
                                     'h-4 w-4 shrink-0'
                                 )}
                                 aria-hidden='true'
