@@ -7,24 +7,35 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-export default function BookCard({
-    items,
-    title,
-    description,
-    category,
-    published,
-    area,
-    price,
-}) {
+export default function BookCard({ items, startIndex, endIndex }) {
+    const slicedBooks = items.slice(startIndex, endIndex);
+
+    const getBackgroundImage = (index) => {
+        const images = [
+            'bg-product-bg-1',
+            'bg-product-bg-2',
+            // 'bg-product-bg-3',
+            'bg-product-bg-4',
+        ];
+        return images[index % images.length]; // Cycling through colors for each product
+    };
     return (
         <>
-            {items.map((item) => (
+            {slicedBooks.map((item, index) => (
                 <div class='shadow-lg mb-8 '>
-                    <div className='bg-slate-100 border-b p-4 relative '>
+                    <div
+                        key={index}
+                        className={`bg-slate-100 border-b p-4 relative bg-cover  bg-center bg-no-repeat ${getBackgroundImage(
+                            index
+                        )}`}
+                    >
+                        <h2 class='focus:outline-none text-xl text-white my-2'>
+                            {item.author}
+                        </h2>
                         <img
                             alt='person capturing an image'
                             src={item.image}
-                            class='focus:outline-none w-full h-44 object-contain'
+                            class='focus:outline-none w-full h-40 object-contain'
                         />
                         <div class='bg-yellow-200 py-1.5 px-4 rounded-[2px] absolute top-2 right-2'>
                             <p class='focus:outline-none text-xs text-yellow-900'>
@@ -55,7 +66,7 @@ export default function BookCard({
                                     {item.published}
                                 </p>
                             </div>
-                            <p class='focus:outline-none text-xs text-gray-800  mt-2 text-left'>
+                            <p class='focus:outline-none text-xs text-gray-800  mt-2 text-left line-clamp-2'>
                                 {item.description}
                             </p>
                             <div class='flex justify-between mt-4'>
@@ -65,21 +76,21 @@ export default function BookCard({
                                     </p>
                                 </div>
                                 {item.tag === 'borrow' ? (
-                                    <button className='bg-black px-4 py-1 text-sm font-semibold rounded-[2px] text-white hover:bg-gray-800 hover:text-gray-200 hover:shadow-xl focus:outline-none flex transition duration-300'>
+                                    <button className='bg-black text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
                                         Borrow
                                     </button>
                                 ) : item.tag === 'exchange' ? (
-                                    <button className='bg-black px-4 py-1 text-sm font-semibold rounded-[2px] text-white hover:bg-gray-800 hover:text-gray-200 hover:shadow-xl focus:outline-none flex transition duration-300'>
+                                    <button className='bg-black text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
                                         Exchange
                                     </button>
                                 ) : item.tag === 'lend' ? (
-                                    <button className='bg-black px-4 py-1 text-sm font-semibold rounded-[2px] text-white hover:bg-gray-800 hover:text-gray-200 hover:shadow-xl focus:outline-none flex transition duration-300'>
+                                    <button className='bg-black text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
                                         Lend
                                     </button>
                                 ) : null}
                             </div>
                             <div class='flex items-center justify-between py-2 border-b border-gray-100'>
-                                <h2 class='focus:outline-none text-indigo-700 text-xs font-semibold'>
+                                <h2 class='focus:outline-none text-teal-500 text-xs font-semibold'>
                                     {item.area}
                                 </h2>
                             </div>
