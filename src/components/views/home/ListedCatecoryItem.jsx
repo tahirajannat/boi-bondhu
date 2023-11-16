@@ -29,7 +29,7 @@ export default function ListedCatecoryItem() {
         <div className='text-left'>
             <Tabs active={active} onChange={handleChange} displayButton={true}>
                 <Tab title='Exchange'>
-                    <div className='my-10 grid grid-cols-4 gap-6'>
+                    <div className='my-10 grid grid-cols-4 gap-6 text-center'>
                         <BookCard items={books} />
                     </div>
                 </Tab>
