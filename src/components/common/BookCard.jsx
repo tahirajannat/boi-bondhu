@@ -22,7 +22,7 @@ export default function BookCard({ items, startIndex, endIndex }) {
     return (
         <>
             {slicedBooks.map((item, index) => (
-                <div class='shadow mb-8 '>
+                <div class='shadow mb-8 text-center '>
                     <div
                         key={index}
                         className={`bg-slate-100  p-4 relative bg-cover  bg-center bg-no-repeat ${getBackgroundImage(

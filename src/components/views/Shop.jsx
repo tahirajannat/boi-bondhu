@@ -1,18 +1,35 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectProductShop,
+    updateProductShop,
+} from '../../redux/reducers/productShopSlice';
 import { books } from '../../utility/data';
 import BookCard from '../common/BookCard';
 import Sidebar from '../views/Sidebar';
 
 export default function Shop() {
+    const productShop = useSelector(selectProductShop);
+    const dispatch = useDispatch();
+
+    const handleColorChange = (e) => {
+        dispatch(
+            updateProductShop({
+                allBooks: {
+                    ...productShop.allBooks,
+                    [e.target.name]: e.target.value,
+                },
+            })
+        );
+    };
+    console.log(productShop.allBooks.title);
     return (
         <div>
-            {/* <ItemAll /> */}
-
             <main class='container  mx-auto px-10 text-right'>
                 <div class=' grid grid-cols-1 border-b border-gray-200 pt-24 pb-6'>
-                    {/* <h1 class="text-4xl font-bold tracking-tight text-gray-900">
-            New Arrivals
-          </h1> */}
+                    <h1 class='text-4xl font-bold tracking-tight text-gray-900'>
+                        {productShop.allBooks.title}
+                    </h1>
                     <div class='text-right col-span-1'>
                         <div class=' items-center'>
                             <div class='relative inline-block text-left'>
