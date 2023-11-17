@@ -5,16 +5,18 @@ import ChatBox from './components/common/ChatBox';
 import CommentBox from './components/common/CommentBox';
 import Borrow from './components/views/Borrow';
 import Contact from './components/views/Contact';
-import DashboardUser from './components/views/DashboardUser';
 import Exchange from './components/views/Exchange';
 // import ChatBox from "./components/ChatBox";
-import ItemSingle from './components/common/ItemSingle';
 import Footer from './components/footer/Footer';
 import MainNav from './components/header/MainNav';
 import Menu from './components/header/Menu';
 import Home from './components/views/Home';
 import Lend from './components/views/Lend';
-import Shop from './components/views/Shop';
+import DashboardMain from './components/views/dashboard/DashboardMain';
+import Archive from './components/views/product/Archive';
+import Cart from './components/views/product/Cart';
+import Checkout from './components/views/product/Checkout';
+import SingleProduct from './components/views/product/SingleProduct';
 
 function App() {
     return (
@@ -28,11 +30,16 @@ function App() {
                     <Route path='/borrow-books' element={<Borrow />} />
                     <Route path='/exchange-books' element={<Exchange />} />
                     <Route path='/contact' element={<Contact />} />
-                    <Route path='/shop' element={<Shop />} />
-                    <Route path='/itemSlug' element={<ItemSingle />} />
+                    <Route path='/shop' element={<Archive />} />
+                    {/* <Route path='/itemSlug' element={<ItemSingle />} /> */}
+                    <Route path='/itemSlug' element={<SingleProduct />} />
                     <Route path='/chat' element={<ChatBox />} />
                     <Route path='/comment' element={<CommentBox />} />
-                    <Route path='/dashboard' element={<DashboardUser />} />
+                    {/* <Route path='/dashboard' element={<DashboardUser />} /> */}
+                    {/* <Route path='/dashboard' element={<DashboardMain />} /> */}
+                    <Route path='/dashboard' element={<DashboardMain />} />
+                    <Route path='/checkout' element={<Checkout />} />
+                    <Route path='/cart' element={<Cart />} />
                     <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
                 </Routes>
             </Router>
