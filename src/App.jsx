@@ -12,6 +12,7 @@ import MainNav from './components/header/MainNav';
 import Menu from './components/header/Menu';
 import Home from './components/views/Home';
 import Lend from './components/views/Lend';
+import Shop from './components/views/Shop';
 import DashboardMain from './components/views/dashboard/DashboardMain';
 import Archive from './components/views/product/Archive';
 import Cart from './components/views/product/Cart';
@@ -31,6 +32,7 @@ function App() {
                     <Route path='/exchange-books' element={<Exchange />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/shop' element={<Archive />} />
+                    <Route path='/shop2' element={<Shop />} />
                     {/* <Route path='/itemSlug' element={<ItemSingle />} /> */}
                     <Route path='/itemSlug' element={<SingleProduct />} />
                     <Route path='/chat' element={<ChatBox />} />

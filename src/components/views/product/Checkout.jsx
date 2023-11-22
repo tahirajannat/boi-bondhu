@@ -50,16 +50,16 @@ export default function Checkout() {
             <div className='mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <h2 className='sr-only'>Checkout</h2>
 
-                <form className='lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16'>
+                <htmlForm className='lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16'>
                     <div>
                         <div>
                             <h2 className='text-lg font-medium text-gray-900'>
-                                Contact information
+                                Contact inhtmlFormation
                             </h2>
 
                             <div className='mt-4'>
                                 <label
-                                    htmlFor='email-address'
+                                    htmlhtmlFor='email-address'
                                     className='block text-sm font-medium text-gray-700'
                                 >
                                     Email address
@@ -78,13 +78,13 @@ export default function Checkout() {
 
                         <div className='mt-10 border-t border-gray-200 pt-10'>
                             <h2 className='text-lg font-medium text-gray-900'>
-                                Shipping information
+                                Shipping inhtmlFormation
                             </h2>
 
                             <div className='mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4'>
                                 <div>
                                     <label
-                                        htmlFor='first-name'
+                                        htmlhtmlFor='first-name'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         First name
@@ -102,7 +102,7 @@ export default function Checkout() {
 
                                 <div>
                                     <label
-                                        htmlFor='last-name'
+                                        htmlhtmlFor='last-name'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Last name
@@ -120,7 +120,7 @@ export default function Checkout() {
 
                                 <div className='sm:col-span-2'>
                                     <label
-                                        htmlFor='company'
+                                        htmlhtmlFor='company'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Company
@@ -137,7 +137,7 @@ export default function Checkout() {
 
                                 <div className='sm:col-span-2'>
                                     <label
-                                        htmlFor='address'
+                                        htmlhtmlFor='address'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Address
@@ -155,7 +155,7 @@ export default function Checkout() {
 
                                 <div className='sm:col-span-2'>
                                     <label
-                                        htmlFor='apartment'
+                                        htmlhtmlFor='apartment'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Apartment, suite, etc.
@@ -172,7 +172,7 @@ export default function Checkout() {
 
                                 <div>
                                     <label
-                                        htmlFor='city'
+                                        htmlhtmlFor='city'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         City
@@ -190,7 +190,7 @@ export default function Checkout() {
 
                                 <div>
                                     <label
-                                        htmlFor='country'
+                                        htmlhtmlFor='country'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Country
@@ -211,7 +211,7 @@ export default function Checkout() {
 
                                 <div>
                                     <label
-                                        htmlFor='region'
+                                        htmlhtmlFor='region'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         State / Province
@@ -229,7 +229,7 @@ export default function Checkout() {
 
                                 <div>
                                     <label
-                                        htmlFor='postal-code'
+                                        htmlhtmlFor='postal-code'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Postal code
@@ -247,7 +247,7 @@ export default function Checkout() {
 
                                 <div className='sm:col-span-2'>
                                     <label
-                                        htmlFor='phone'
+                                        htmlhtmlFor='phone'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Phone
@@ -382,7 +382,9 @@ export default function Checkout() {
                                                 )}
 
                                                 <label
-                                                    htmlFor={paymentMethod.id}
+                                                    htmlhtmlFor={
+                                                        paymentMethod.id
+                                                    }
                                                     className='ml-3 block text-sm font-medium text-gray-700'
                                                 >
                                                     {paymentMethod.title}
@@ -396,7 +398,7 @@ export default function Checkout() {
                             <div className='mt-6 grid grid-cols-4 gap-x-4 gap-y-6'>
                                 <div className='col-span-4'>
                                     <label
-                                        htmlFor='card-number'
+                                        htmlhtmlFor='card-number'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Card number
@@ -414,7 +416,7 @@ export default function Checkout() {
 
                                 <div className='col-span-4'>
                                     <label
-                                        htmlFor='name-on-card'
+                                        htmlhtmlFor='name-on-card'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Name on card
@@ -432,7 +434,7 @@ export default function Checkout() {
 
                                 <div className='col-span-3'>
                                     <label
-                                        htmlFor='expiration-date'
+                                        htmlhtmlFor='expiration-date'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         Expiration date (MM/YY)
@@ -450,7 +452,7 @@ export default function Checkout() {
 
                                 <div>
                                     <label
-                                        htmlFor='cvc'
+                                        htmlhtmlFor='cvc'
                                         className='block text-sm font-medium text-gray-700'
                                     >
                                         CVC
@@ -536,7 +538,7 @@ export default function Checkout() {
 
                                                 <div className='ml-4'>
                                                     <label
-                                                        htmlFor='quantity'
+                                                        htmlhtmlFor='quantity'
                                                         className='sr-only'
                                                     >
                                                         Quantity
@@ -616,7 +618,7 @@ export default function Checkout() {
                             </div>
                         </div>
                     </div>
-                </form>
+                </htmlForm>
             </div>
         </div>
     );

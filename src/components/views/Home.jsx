@@ -19,7 +19,7 @@ export default function Home() {
                         <img
                             alt='promotional AD'
                             src={Ad}
-                            class='focus:outline-none w-full h-auto object-contain mt-5'
+                            className='focus:outline-none w-full h-auto object-contain mt-5'
                         />
                     </div>
 

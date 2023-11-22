@@ -78,7 +78,7 @@ export const books = [
         published: 'August 22, 2022',
         category: 'goyenda',
         tag: 'lend',
-        area: 'Mohammadpur',
+        area: 'Badda',
         price: '',
     },
     {
@@ -101,7 +101,7 @@ export const books = [
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0NSx3OvVpnA61GB2FNDpgA-IOf1BLqtlmWUO4Va2EP1r1jHa8E0RAJyudeWDtr1XOgg&usqp=CAU',
         published: '4 days ago',
         category: 'travel',
-        area: 'Mohammadpur',
+        area: 'Dhanmondi',
         price: '',
     },
     {
@@ -112,7 +112,7 @@ export const books = [
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0NSx3OvVpnA61GB2FNDpgA-IOf1BLqtlmWUO4Va2EP1r1jHa8E0RAJyudeWDtr1XOgg&usqp=CAU',
         published: 'August 22, 2022',
         category: 'travel',
-        area: 'Mohammadpur',
+        area: 'uttora',
         price: '',
     },
     {
@@ -254,4 +254,57 @@ export const products = [
         imageAlt: 'Front of plain black t-shirt.',
     },
     // More products...
+];
+
+export const areas = [
+    { value: 'basundhora' },
+    {
+        value: 'mohammadpur',
+    },
+    {
+        value: 'mirpur',
+    },
+    {
+        value: 'uttora',
+    },
+    {
+        value: 'badda',
+    },
+];
+export const categories = [
+    { value: 'novel' },
+    {
+        value: 'thriller',
+    },
+    {
+        value: 'travel',
+    },
+    {
+        value: 'cook-book',
+    },
+    {
+        value: 'megazine',
+    },
+];
+export const productsList = [
+    {
+        id: 1,
+        title: 'Product 1',
+        category: 'first',
+    },
+    {
+        id: 2,
+        title: 'Product 2',
+        category: 'second',
+    },
+    {
+        id: 3,
+        title: 'Product 3',
+        category: 'first',
+    },
+    {
+        id: 4,
+        title: 'Product 4',
+        category: 'second',
+    },
 ];

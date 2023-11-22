@@ -30,14 +30,14 @@ export default function CommentBox() {
         let updatedComments = [...comments];
 
         if (type === 'comment') {
-            updatedComments.forEach((data) => {
+            updatedComments.htmlForEach((data) => {
                 if (data.id === id) {
                     data.score = score;
                 }
             });
         } else if (type === 'reply') {
-            updatedComments.forEach((comment) => {
-                comment.replies.forEach((data) => {
+            updatedComments.htmlForEach((comment) => {
+                comment.replies.htmlForEach((data) => {
                     if (data.id === id) {
                         data.score = score;
                     }
@@ -56,7 +56,7 @@ export default function CommentBox() {
     // add replies
     let updateReplies = (replies, id) => {
         let updatedComments = [...comments];
-        updatedComments.forEach((data) => {
+        updatedComments.htmlForEach((data) => {
             if (data.id === id) {
                 data.replies = [...replies];
             }
@@ -69,14 +69,14 @@ export default function CommentBox() {
         let updatedComments = [...comments];
 
         if (type === 'comment') {
-            updatedComments.forEach((data) => {
+            updatedComments.htmlForEach((data) => {
                 if (data.id === id) {
                     data.content = content;
                 }
             });
         } else if (type === 'reply') {
-            updatedComments.forEach((comment) => {
-                comment.replies.forEach((data) => {
+            updatedComments.htmlForEach((comment) => {
+                comment.replies.htmlForEach((data) => {
                     if (data.id === id) {
                         data.content = content;
                     }
@@ -95,7 +95,7 @@ export default function CommentBox() {
         if (type === 'comment') {
             updatedComments = updatedComments.filter((data) => data.id !== id);
         } else if (type === 'reply') {
-            comments.forEach((comment) => {
+            comments.htmlForEach((comment) => {
                 if (comment.id === parentComment) {
                     updatedReplies = comment.replies.filter(
                         (data) => data.id !== id

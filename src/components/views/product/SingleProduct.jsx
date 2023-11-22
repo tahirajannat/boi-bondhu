@@ -7,7 +7,7 @@ const product = {
     version: { name: '1.0', date: 'June 5, 2021', datetime: '2021-06-05' },
     price: '$220',
     description:
-        'The Application UI Icon Pack comes with over 200 icons in 3 styles: outline, filled, and branded. This playful icon pack is tailored for complex application user interfaces with a friendly and legible look.',
+        'The Application UI Icon Pack comes with over 200 icons in 3 styles: outline, filled, and branded. This playful icon pack is tailored htmlFor complex application user interfaces with a friendly and legible look.',
     highlights: [
         '200+ SVG icons in 3 unique styles',
         'Compatible with Figma, Sketch, and Adobe XD',
@@ -25,13 +25,13 @@ const reviews = {
             id: 1,
             rating: 5,
             content: `
-        <p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>
+        <p>This icon pack is just what I need htmlFor my latest project. There's an icon htmlFor just about anything I could ever need. Love the playful look!</p>
       `,
             date: 'July 16, 2021',
             datetime: '2021-07-16',
             author: 'Emily Selman',
             avatarSrc:
-                'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
+                'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=htmlFormat&fit=facearea&facepad=8&w=256&h=256&q=80',
         },
         {
             id: 2,
@@ -43,15 +43,15 @@ const reviews = {
             datetime: '2021-07-12',
             author: 'Hector Gibbons',
             avatarSrc:
-                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=htmlFormat&fit=facearea&facepad=8&w=256&h=256&q=80',
         },
         // More reviews...
     ],
 };
 const faqs = [
     {
-        question: 'What format are these icons?',
-        answer: 'The icons are in SVG (Scalable Vector Graphic) format. They can be imported into your design tool of choice and used directly in code.',
+        question: 'What htmlFormat are these icons?',
+        answer: 'The icons are in SVG (Scalable Vector Graphic) htmlFormat. They can be imported into your design tool of choice and used directly in code.',
     },
     {
         question: 'Can I use the icons at different sizes?',
@@ -62,11 +62,11 @@ const faqs = [
 const license = {
     href: '#',
     summary:
-        'For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.',
+        'htmlFor personal and professional use. You cannot resell or redistribute these icons in their original or modified state.',
     content: `
     <h4>Overview</h4>
     
-    <p>For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.</p>
+    <p>htmlFor personal and professional use. You cannot resell or redistribute these icons in their original or modified state.</p>
     
     <ul role="list">
     <li>You\'re allowed to use the icons in unlimited projects.</li>
@@ -119,10 +119,10 @@ export default function SingleProduct() {
                                 </h1>
 
                                 <h2
-                                    id='information-heading'
+                                    id='inhtmlFormation-heading'
                                     className='sr-only'
                                 >
-                                    Product information
+                                    Product inhtmlFormation
                                 </h2>
                                 <p className='mt-2 text-sm text-gray-500'>
                                     Version {product.version.name} (Updated{' '}

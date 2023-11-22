@@ -251,10 +251,10 @@ export default function Cart() {
                     <div className='fixed inset-0 z-40 flex'>
                         <Transition.Child
                             as={Fragment}
-                            enter='transition ease-in-out duration-300 transform'
+                            enter='transition ease-in-out duration-300 transhtmlForm'
                             enterFrom='-translate-x-full'
                             enterTo='translate-x-0'
-                            leave='transition ease-in-out duration-300 transform'
+                            leave='transition ease-in-out duration-300 transhtmlForm'
                             leaveFrom='translate-x-0'
                             leaveTo='-translate-x-full'
                         >
@@ -746,7 +746,7 @@ export default function Cart() {
                     Shopping Cart
                 </h1>
 
-                <form className='mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16'>
+                <htmlForm className='mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16'>
                     <section
                         aria-labelledby='cart-heading'
                         className='lg:col-span-7'
@@ -802,7 +802,7 @@ export default function Cart() {
 
                                             <div className='mt-4 sm:mt-0 sm:pr-9'>
                                                 <label
-                                                    htmlFor={`quantity-${productIdx}`}
+                                                    htmlhtmlFor={`quantity-${productIdx}`}
                                                     className='sr-only'
                                                 >
                                                     Quantity, {product.name}
@@ -946,7 +946,7 @@ export default function Cart() {
                             </button>
                         </div>
                     </section>
-                </form>
+                </htmlForm>
 
                 {/* Related products */}
                 <section aria-labelledby='related-heading' className='mt-24'>
@@ -1092,15 +1092,15 @@ export default function Cart() {
                             {/* Newsletter section */}
                             <div className='mt-12 md:col-span-8 md:col-start-3 md:row-start-2 md:mt-0 lg:col-span-4 lg:col-start-9 lg:row-start-1'>
                                 <h3 className='text-sm font-medium text-gray-900'>
-                                    Sign up for our newsletter
+                                    Sign up htmlFor our newsletter
                                 </h3>
                                 <p className='mt-6 text-sm text-gray-500'>
                                     The latest deals and savings, sent to your
                                     inbox weekly.
                                 </p>
-                                <form className='mt-2 flex sm:max-w-md'>
+                                <htmlForm className='mt-2 flex sm:max-w-md'>
                                     <label
-                                        htmlFor='email-address'
+                                        htmlhtmlFor='email-address'
                                         className='sr-only'
                                     >
                                         Email address
@@ -1120,7 +1120,7 @@ export default function Cart() {
                                             Sign up
                                         </button>
                                     </div>
-                                </form>
+                                </htmlForm>
                             </div>
                         </div>
                     </div>

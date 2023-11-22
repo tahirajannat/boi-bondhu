@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function FilterArea({ items, onChange }) {
+export default function FilterCategory({ items, onChange }) {
     return (
         <div>
             <div className='border-b border-gray-200 py-6'>
@@ -11,7 +9,9 @@ export default function FilterArea({ items, onChange }) {
                         aria-controls='filter-section-0'
                         aria-expanded='false'
                     >
-                        <span className='font-medium text-gray-900'>Area</span>
+                        <span className='font-medium text-gray-900'>
+                            Books Category
+                        </span>
                         <span className='ml-6 flex items-center'>
                             <svg
                                 className='h-5 w-5'

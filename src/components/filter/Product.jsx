@@ -6,8 +6,13 @@ import {
     FaTwitter,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
-export default function BookCard({ items, startIndex, endIndex }) {
+export default function Product({
+    title,
+    category,
+    items,
+    startIndex,
+    endIndex,
+}) {
     const slicedBooks = items.slice(startIndex, endIndex);
 
     const getBackgroundImage = (index) => {

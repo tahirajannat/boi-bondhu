@@ -3,7 +3,7 @@ const products = [
         id: 1,
         name: 'Cold Brew Bottle',
         description:
-            'This glass bottle comes with a mesh insert for steeping tea or cold-brewing coffee. Pour from any angle and remove the top for easy cleaning.',
+            'This glass bottle comes with a mesh insert htmlFor steeping tea or cold-brewing coffee. Pour from any angle and remove the top htmlFor easy cleaning.',
         href: '#',
         quantity: 1,
         price: '$32.00',
@@ -87,7 +87,7 @@ export default function OrderDetails() {
                     ))}
 
                     <div className='sm:ml-40 sm:pl-6'>
-                        <h3 className='sr-only'>Your information</h3>
+                        <h3 className='sr-only'>Your inhtmlFormation</h3>
 
                         <h4 className='sr-only'>Addresses</h4>
                         <dl className='grid grid-cols-2 gap-x-6 py-10 text-sm'>
