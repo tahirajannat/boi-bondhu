@@ -1,80 +1,80 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import React, { useEffect, useRef, useState } from 'react';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa';
 
 const featuredProducts = [
-  "/images/banner-1.jpg",
-  "/images/banner-2.jpg",
-  "/images/banner-3.jpg",
-  "/images/banner-4.jpg",
+    '/images/banner-1.jpg',
+    '/images/banner-2.jpg',
+    '/images/banner-3.jpg',
+    '/images/banner-4.jpg',
 ];
 
 let count = 0;
 let slideInterval;
 
 export default function Slider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-  const slideRef = useRef();
+    const slideRef = useRef();
 
-  const removeAnimation = () => {
-    slideRef.current.classList.remove("fade-anim");
-  };
-
-  let myImages = "../";
-  useEffect(() => {
-    slideRef.current.addEventListener("animationed", removeAnimation);
-    slideRef.current.addEventListener("mouseenter", pauseSlider);
-    slideRef.current.addEventListener("mouseleave", startSlider);
-    startSlider();
-    return () => {
-      pauseSlider();
+    const removeAnimation = () => {
+        slideRef.current.classList.remove('fade-anim');
     };
-  }, []);
 
-  const startSlider = () => {
-    // slideInterval = setInterval(() => {
-    //   handleOnNext();
-    // }, 3000);
-  };
+    let myImages = '../';
+    useEffect(() => {
+        slideRef.current.addEventListener('animationed', removeAnimation);
+        slideRef.current.addEventListener('mouseenter', pauseSlider);
+        slideRef.current.addEventListener('mouseleave', startSlider);
+        startSlider();
+        return () => {
+            pauseSlider();
+        };
+    }, []);
 
-  const pauseSlider = () => {
-    clearInterval(slideInterval);
-  };
+    const startSlider = () => {
+        // slideInterval = setInterval(() => {
+        //   handleOnNext();
+        // }, 3000);
+    };
 
-  const handleOnNext = () => {
-    count = (count + 1) % featuredProducts.length;
-    setCurrentIndex(count);
-    slideRef.current.classList.add("fade-anim");
-  };
-  console.log(currentIndex);
+    const pauseSlider = () => {
+        clearInterval(slideInterval);
+    };
 
-  const handleOnPrev = () => {
-    const bannersLength = featuredProducts.length;
-    count = (currentIndex + bannersLength - 1) % bannersLength;
-    setCurrentIndex(count);
-    slideRef.current.classList.add("fade-anim");
-  };
+    const handleOnNext = () => {
+        count = (count + 1) % featuredProducts.length;
+        setCurrentIndex(count);
+        slideRef.current.classList.add('fade-anim');
+    };
+    console.log(currentIndex);
 
-  // console.log(slideRef);
+    const handleOnPrev = () => {
+        const bannersLength = featuredProducts.length;
+        count = (currentIndex + bannersLength - 1) % bannersLength;
+        setCurrentIndex(count);
+        slideRef.current.classList.add('fade-anim');
+    };
 
-  return (
-    <div ref={slideRef} className="w-full select-none relative aspect-h-9">
-      <img
-        src={featuredProducts[currentIndex]}
-        alt=""
-        className="h-96 w-full object-center object-cover brightness-50 aspect-h-9 "
-      />
+    // console.log(slideRef);
 
-      <div className="absolute w-full top-1/2	transform  -translate-y-1/2 py-2 px-3 flex justify-between items-center">
-        <button onClick={handleOnPrev} className="bg-white p-3">
-          <FaLongArrowAltLeft className="text-teal-500" />
-        </button>
-        <button onClick={handleOnNext} className="bg-white p-3">
-          <FaLongArrowAltRight className="text-teal-500" />
-        </button>
-      </div>
+    return (
+        <div ref={slideRef} className='w-full select-none relative aspect-h-9'>
+            <img
+                src={featuredProducts[currentIndex]}
+                alt=''
+                className='h-96 w-full object-center object-cover brightness-50 aspect-h-9 '
+            />
 
-      {/* <div className="flex flex-wrap projects">
+            <div className='absolute w-full top-1/2	transhtmlForm  -translate-y-1/2 py-2 px-3 flex justify-between items-center'>
+                <button onClick={handleOnPrev} className='bg-white p-3'>
+                    <FaLongArrowAltLeft className='text-teal-500' />
+                </button>
+                <button onClick={handleOnNext} className='bg-white p-3'>
+                    <FaLongArrowAltRight className='text-teal-500' />
+                </button>
+            </div>
+
+            {/* <div className="flex flex-wrap projects">
         {resources.map((project) => (
           <a
             href={project.link}
@@ -101,6 +101,6 @@ export default function Slider() {
           </a>
         ))}
       </div> */}
-    </div>
-  );
+        </div>
+    );
 }

@@ -18,47 +18,47 @@ export default function MainNav(props) {
                     </a>
                 </div>
                 <div className='col-span-4 mt-2'>
-                    <form>
-                        <div class='flex'>
-                            <div class='relative w-full'>
+                    <htmlForm>
+                        <div className='flex'>
+                            <div className='relative w-full'>
                                 <input
                                     type='search'
                                     id='location-search"'
-                                    class='block p-2 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300  focus:ring-transparent focus:border-gray-400 focus:outline-none'
-                                    placeholder='Search for city or address'
+                                    className='block p-2 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300  focus:ring-transparent focus:border-gray-400 focus:outline-none'
+                                    placeholder='Search htmlFor city or address'
                                     required=''
                                 />
                                 <button
                                     type='submit'
-                                    class='absolute top-0 right-0 p-2 text-sm font-medium text-black bg-gray-300 rounded-r-md border border-gray-400 hover:bg-gray-400 focus:ring-0 focus:outline-none active:outline-none'
+                                    className='absolute top-0 right-0 p-2 text-sm font-medium text-black bg-gray-300 rounded-r-md border border-gray-400 hover:bg-gray-400 focus:ring-0 focus:outline-none active:outline-none'
                                 >
                                     <svg
                                         aria-hidden='true'
-                                        class='w-5 h-5'
+                                        className='w-5 h-5'
                                         fill='none'
                                         stroke='currentColor'
                                         viewBox='0 0 24 24'
                                         xmlns='http://www.w3.org/2000/svg'
                                     >
                                         <path
-                                            stroke-linecap='round'
-                                            stroke-linejoin='round'
-                                            stroke-width='2'
+                                            strokeLinecap='round'
+                                            strokeLinejoin='round'
+                                            strokeWidth='2'
                                             d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
                                         ></path>
                                     </svg>
-                                    <span class='sr-only'>Search</span>
+                                    <span className='sr-only'>Search</span>
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </htmlForm>
                 </div>
                 <div className=' col-span-4 text-right flex-wrap mt-3'>
                     <div className=' flex-wrap text-right'>
                         <Login />
                         <SignUp />
                         <select
-                            class='classic appearance-none py-1 pl-4 pr-8 rounded-md  bg-transparent text-black focus:outline-nones text-left border border-black'
+                            className='classic appearance-none py-1 pl-4 pr-8 rounded-md  bg-transparent text-black focus:outline-nones text-left border border-black'
                             name='whatever'
                             id='frm-whatever'
                         >

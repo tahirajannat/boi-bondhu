@@ -4,40 +4,40 @@ import Data from '../../data';
 
 export default function ItemsCard() {
     return (
-        <div class=' items-left bg-white '>
-            <div class='container mx-auto py-20'>
-                <div class='w-full mb-10 text-left'>
-                    <h1 class='text-3xl text-gray-700 font-bold'>
+        <div className=' items-left bg-white '>
+            <div className='container mx-auto py-20'>
+                <div className='w-full mb-10 text-left'>
+                    <h1 className='text-3xl text-gray-700 font-bold'>
                         Best Reviewed
                     </h1>
                 </div>
                 <div className='grid grid-cols-12 gap-4'>
                     {Data.slice(0, 4).map((index, key) => (
-                        <div class=' col-span-3 '>
-                            <div class='bg-indigo-100 rounded-lg m-h-56  transform hover:translate-y-2 hover:shadow-xl transition duration-300'>
-                                <figure class='mb-3 pt-3'>
+                        <div className=' col-span-3 '>
+                            <div className='bg-indigo-100 rounded-lg m-h-56  transhtmlForm hover:translate-y-2 hover:shadow-xl transition duration-300'>
+                                <figure className='mb-3 pt-3'>
                                     <img
                                         src={index.image}
                                         alt=''
-                                        class='h-52  ml-auto mr-auto'
+                                        className='h-52  ml-auto mr-auto'
                                     />
                                 </figure>
-                                <div class='rounded-b-lg px-4 py-3 bg-gray-600 flex flex-col text-left'>
+                                <div className='rounded-b-lg px-4 py-3 bg-gray-600 flex flex-col text-left'>
                                     <div>
-                                        <h5 class='text-white text-xl font-bold leading-none'>
+                                        <h5 className='text-white text-xl font-bold leading-none'>
                                             iPhone 11
                                         </h5>
-                                        {/* <span class="text-xs text-gray-400 leading-none">
+                                        {/* <span className="text-xs text-gray-400 leading-none">
                       Just the right amount of everything.
                     </span> */}
                                     </div>
                                     <Link to='/itemSlug'>
-                                        <div class='flex items-center mt-2'>
-                                            <div class='text-sm text-white font-light'>
+                                        <div className='flex items-center mt-2'>
+                                            <div className='text-sm text-white font-light'>
                                                 Travel
                                             </div>
 
-                                            <button class='rounded-full bg-yellow-600 text-white hover:bg-white hover:text-purple-900 hover:shadow-xl focus:outline-none w-8 h-8 flex ml-auto transition duration-300'>
+                                            <button className='rounded-full bg-yellow-600 text-white hover:bg-white hover:text-purple-900 hover:shadow-xl focus:outline-none w-8 h-8 flex ml-auto transition duration-300'>
                                                 <svg
                                                     xmlns='http://www.w3.org/2000/svg'
                                                     width='20'
@@ -45,10 +45,10 @@ export default function ItemsCard() {
                                                     viewBox='0 0 24 24'
                                                     fill='none'
                                                     stroke='currentColor'
-                                                    stroke-width='2'
-                                                    stroke-linecap='round'
-                                                    stroke-linejoin='round'
-                                                    class='stroke-current m-auto'
+                                                    strokeWidth='2'
+                                                    strokeLinecap='round'
+                                                    strokeLinejoin='round'
+                                                    className='stroke-current m-auto'
                                                 >
                                                     <line
                                                         x1='12'
@@ -66,14 +66,14 @@ export default function ItemsCard() {
                                             </button>
                                         </div>
                                     </Link>
-                                    <div class='py-2 text-left border-t mt-2'>
-                                        <span class='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
+                                    <div className='py-2 text-left border-t mt-2'>
+                                        <span className='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
                                             #photography
                                         </span>
-                                        <span class='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
+                                        <span className='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
                                             #travel
                                         </span>
-                                        <span class='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700'>
+                                        <span className='inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700'>
                                             #winter
                                         </span>
                                     </div>

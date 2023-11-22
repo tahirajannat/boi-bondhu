@@ -12,7 +12,7 @@ export default function ProductGrid() {
                     </div>
                 ))}
             </div>
-            <button class='bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded'>
+            <button className='bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded'>
                 Load More
             </button>
         </div>

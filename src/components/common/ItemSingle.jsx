@@ -67,11 +67,11 @@ export default function ItemSingle() {
                                 Fam locavore kickstarter distillery. Mixtape
                                 chillwave tumeric sriracha taximy chia
                                 microdosing tilde DIY. XOXO fam indxgo
-                                juiceramps cornhole raw denim forage brooklyn.
-                                Everyday carry +1 seitan poutine tumeric.
-                                Gastropub blue bottle austin listicle pour-over,
-                                neutra jean shorts keytar banjo tattooed umami
-                                cardigan.
+                                juiceramps cornhole raw denim htmlForage
+                                brooklyn. Everyday carry +1 seitan poutine
+                                tumeric. Gastropub blue bottle austin listicle
+                                pour-over, neutra jean shorts keytar banjo
+                                tattooed umami cardigan.
                             </p>
 
                             <div className='flex border-t-2 border-gray-200 mt-5'>
@@ -96,8 +96,8 @@ export default function ItemSingle() {
                 </div>
                 {/* <ItemsCard /> */}
                 <div className='container mx-auto my-16'>
-                    <div class='w-full mb-10 text-left'>
-                        <h1 class='text-3xl text-black font-bold'>
+                    <div className='w-full mb-10 text-left'>
+                        <h1 className='text-3xl text-black font-bold'>
                             Best Reviewed
                         </h1>
 

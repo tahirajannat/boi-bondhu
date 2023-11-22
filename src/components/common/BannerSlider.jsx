@@ -43,11 +43,11 @@ export default function BannerSlider() {
                     <SwiperSlide className='bg-product-bg-1'>
                         <img src={item.src} alt='' srcset='' className='' />
                         <div className='absolute top-1/2 left-0 -translate-y-1/2'>
-                            <div class='w-3/4 mb-10 text-left my-8 p-8 '>
+                            <div className='w-3/4 mb-10 text-left my-8 p-8 '>
                                 <h1 className='text-yellow-600 font-bold text-lg'>
                                     With Boibondhu
                                 </h1>
-                                <h2 class='text-6xl text-white font-normal pb-2   leading-tight'>
+                                <h2 className='text-6xl text-white font-normal pb-2   leading-tight'>
                                     {item.title}
 
                                     {/* <span className='text-yellow-500'>
