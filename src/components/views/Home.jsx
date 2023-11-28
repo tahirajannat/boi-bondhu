@@ -14,7 +14,7 @@ export default function Home() {
         <div className='my-8 container mx-auto px-20'>
             <div className='grid grid-cols-12 gap-6 container mx-auto'>
                 <div className=' col-span-3'>
-                    <SideNav />
+                    <SideNav title={'Preferences'} />
                     <div>
                         <img
                             alt='promotional AD'
