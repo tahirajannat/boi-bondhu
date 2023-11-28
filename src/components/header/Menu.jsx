@@ -14,21 +14,25 @@ export default function Menu(props) {
                     </label>
 
                     <ul className=' menu flex items-center text-black'>
-                        <a href='/lend-books' className='relative mx-4'>
+                        <a href='/' className='relative mx-4'>
+                            Home
+                        </a>
+                        <a href='/lend' className='relative mx-4'>
                             Lend Books
                         </a>
 
-                        <a href='/borrow-books' className='relative mx-4'>
+                        <a href='/borrow' className='relative mx-4'>
                             Borrow Books
                         </a>
-                        <a href='/exchange-books' className='relative mx-4'>
+                        <a href='/exchange' className='relative mx-4'>
                             Exchange
+                        </a>
+
+                        <a href='/shop' className=' relative'>
+                            Shop
                         </a>
                         <a href='/contact' className=' relative mx-4'>
                             Contact Us
-                        </a>
-                        <a href='/shop' className=' relative'>
-                            Shop
                         </a>
                     </ul>
                 </nav>

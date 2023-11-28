@@ -1,35 +1,9 @@
-import { HiOutlinePuzzle, HiOutlineTag, HiRss, HiShare } from 'react-icons/hi';
+import { useState } from 'react';
+import { HiOutlinePuzzle } from 'react-icons/hi';
+import { HiOutlineTag, HiRss, HiShare } from 'react-icons/hi2';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProductShop } from '../../redux/reducers/productShopSlice';
 
-const navigation = [
-    {
-        name: 'Exchange',
-        href: '#',
-        icon: HiShare,
-        count: '5',
-        current: true,
-    },
-    {
-        name: 'Borrow',
-        href: '#',
-        icon: HiRss,
-        count: '12',
-        current: false,
-    },
-    {
-        name: 'Lend',
-        href: '#',
-        icon: HiOutlinePuzzle,
-        count: '20+',
-        current: false,
-    },
-    {
-        name: 'Buy & Sell',
-        href: '#',
-        icon: HiOutlineTag,
-        count: '120+',
-        current: false,
-    },
-];
 const secondaryNavigation = [
     { name: 'Website redesign', href: '#', initial: 'W', current: false },
     { name: 'GraphQL API', href: '#', initial: 'G', current: false },
@@ -46,11 +20,61 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function SideNav() {
+export default function SideNav({ title }) {
+    const dispatch = useDispatch();
+    const productShop = useSelector(selectProductShop);
+    const [products, setProducts] = useState(productShop.allBooks);
+
+    // Assuming each product has a 'preference' property
+    const preferences = products.map((product) => product.preference);
+    console.log('all preferences', preferences);
+
+    const preferenceCounts = preferences.reduce((counts, preference) => {
+        counts[preference] = (counts[preference] || 0) + 1;
+        return counts;
+    }, {});
+
+    const {
+        exchange: exchangeCount = 0,
+        lend: lendCount = 0,
+        borrow: borrowCount = 0,
+    } = preferenceCounts;
+
+    const totalCount = exchangeCount + lendCount + borrowCount;
+    const navigation = [
+        {
+            name: 'Exchange',
+            href: '/exchange',
+            icon: HiShare,
+            count: exchangeCount,
+            current: true,
+        },
+        {
+            name: 'Borrow',
+            href: '/borrow',
+            icon: HiRss,
+            count: borrowCount,
+            current: false,
+        },
+        {
+            name: 'Lend',
+            href: 'lend',
+            icon: HiOutlinePuzzle,
+            count: lendCount,
+            current: false,
+        },
+        {
+            name: 'Buy & Sell',
+            href: '/shop',
+            icon: HiOutlineTag,
+            count: totalCount,
+            current: false,
+        },
+    ];
     return (
         <nav className='bg-white shadow-sm px-4 py-3' aria-label='Sidebar'>
             <div className='text-sm font-bold leading-6 text-teal-600 text-left mb-3'>
-                Projects
+                {title}
             </div>
             <ul role='list' className='-mx-2 space-y-1 block'>
                 {navigation.map((item) => (
@@ -76,7 +100,12 @@ export default function SideNav() {
                             {item.name}
                             {item.count ? (
                                 <span
-                                    className='ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-white px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-gray-600 ring-1 ring-inset ring-gray-200'
+                                    className={classNames(
+                                        item.current
+                                            ? 'bg-white '
+                                            : ' bg-gray-50 ',
+                                        'ml-auto  items-center flex justify-center whitespace-nowrap rounded-full shadow-sm w-5 h-5 text-center text-xs font-medium leading-5 text-teal-600'
+                                    )}
                                     aria-hidden='true'
                                 >
                                     {item.count}

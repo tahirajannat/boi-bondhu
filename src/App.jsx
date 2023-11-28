@@ -27,9 +27,9 @@ function App() {
                 <Menu />
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/lend-books' element={<Lend />} />
-                    <Route path='/borrow-books' element={<Borrow />} />
-                    <Route path='/exchange-books' element={<Exchange />} />
+                    <Route path='/lend' element={<Lend />} />
+                    <Route path='/borrow' element={<Borrow />} />
+                    <Route path='/exchange' element={<Exchange />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/shop' element={<Archive />} />
                     <Route path='/shop2' element={<Shop />} />

@@ -75,15 +75,15 @@ export default function BookCard({ items, startIndex, endIndex }) {
                                         #{item.category}
                                     </p>
                                 </div>
-                                {item.tag === 'borrow' ? (
+                                {item.preference === 'borrow' ? (
                                     <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
                                         Borrow
                                     </button>
-                                ) : item.tag === 'exchange' ? (
+                                ) : item.preference === 'exchange' ? (
                                     <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
                                         Exchange
                                     </button>
-                                ) : item.tag === 'lend' ? (
+                                ) : item.preference === 'lend' ? (
                                     <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
                                         Lend
                                     </button>

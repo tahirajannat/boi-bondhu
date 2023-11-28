@@ -1,10 +1,30 @@
 // import { Route, Router, Routes } from "react-router-dom";
+import { useState } from 'react';
 import Logo from '../../assets/logo-4.png';
 import Login from '../userAuth/Login';
 // import Shop from "./Shop";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProductShop } from '../../redux/reducers/productShopSlice';
 import SignUp from '../userAuth/SignUp';
 
-export default function MainNav(props) {
+export default function MainNav() {
+    const dispatch = useDispatch();
+    const productShop = useSelector(selectProductShop);
+    const [films, setFilms] = useState(productShop.allBooks);
+    const handeladd = (newmovie) => {
+        setFilms([...films, newmovie]);
+    };
+    const [search, setSearch] = useState('');
+    const handelserch = (searchedmovie) => {
+        setSearch(searchedmovie);
+    };
+    const [ratin, setRating] = useState(0); // initial rating value
+
+    // Catch Rating value
+    const handleRating = (rate) => {
+        setRating(rate);
+        // other logic
+    };
     return (
         <header className='bg-white  shadow-lg transition-shadow font-serif z-20'>
             <div className='container mx-auto  px-20 py-6 grid grid-cols-12 gap-4'>
@@ -52,6 +72,13 @@ export default function MainNav(props) {
                             </div>
                         </div>
                     </htmlForm>
+                    {/* <SearchBooks
+                        searchp={search}
+                        handelserchp={handelserch}
+                        searchrate={ratin}
+                        handelserchrate={handleRating}
+                    />
+                    <SearchList /> */}
                 </div>
                 <div className=' col-span-4 text-right flex-wrap mt-3'>
                     <div className=' flex-wrap text-right'>
