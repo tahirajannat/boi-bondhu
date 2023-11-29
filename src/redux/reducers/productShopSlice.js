@@ -5,6 +5,7 @@ import Book1 from '../../assets/images/book-1.jpg';
 const initialState = {
     allBooks: [
         {
+            id: 1,
             title: 'ডোপামিন ডিটক্স',
             author: 'থিবো মেরিস',
             translate: 'প্রিতম মুজতাহিদ',
@@ -18,6 +19,7 @@ const initialState = {
             price: '',
         },
         {
+            id: 2,
             title: 'উপন্যাস সমগ্র -২য়',
             author: 'সঞ্জীব চট্টোপাধ্যায়',
             description:
@@ -30,6 +32,7 @@ const initialState = {
             price: '',
         },
         {
+            id: 3,
             title: 'গোয়েন্দা গার্গী',
             author: 'তপন বন্দোপাধ্যায়',
             description:
@@ -37,11 +40,12 @@ const initialState = {
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlPAKAw8LGLEr1gw_yFIzDbmKcfar5_mkA36TVv8ojgZU2IUgOKGM2Y2v_9QWhm7OltYo&usqp=CAU',
             published: 'August 22, 2022',
             category: 'goyenda',
-            preference: 'borrow',
+            preference: 'lend',
             area: 'Mohammadpur',
             price: '',
         },
         {
+            id: 4,
             title: 'রূপসী বাংলা',
             author: 'জীবনানন্দ দাস',
             description:
@@ -54,6 +58,7 @@ const initialState = {
             price: '',
         },
         {
+            id: 5,
             title: 'রূপসী বাংলা',
             author: 'জীবনানন্দ দাস',
             description:
@@ -66,16 +71,31 @@ const initialState = {
             price: '',
         },
         {
+            id: 6,
             title: 'গোয়েন্দা গার্গী',
             author: 'তপন বন্দোপাধ্যায়',
             description:
                 'গার্গী মুখার্জি। কলেজের তৃতীয় বর্ষের অঙ্কে অনার্সের ছাত্রী। আর পাঁচজন সমবয়সি মেয়েদের থেকে আলাদা স্বভাবের। ছেলেবেলা থেকে গােয়েন্দা গল্পের পোকা গার্গী সবসময় যে-কোনও সমস্যার ভিতরে ঢুকে পড়তে চায়। তীক্ষ্ণ বুদ্ধি দিয়ে বিচার করে নানান দৃষ্টিকোণ থেকে। এবং উন্মোচিত হয় একের পর এক আশ্চর্য সব রহস্য। গোয়েন্দা গার্গী বইয়ে এইরকম দশদশটি রহস্য একত্রে পরিবেশিত হয়েছে কিশোর-কিশোরী পড়ুয়াদের জন্য। গার্গীর বৈশিষ্ট্য, সে যে-কোনও জটিল সমস্যা-সঙ্কটে মাথা ঠান্ডা রাখে, খুবই সাদামাটাভঙ্গিতে বিষয়ের গভীরে প্রবেশ করে। আর যেসব রহস্য নিয়ে তার গোয়েন্দাগিরি, তার অধিকাংশই কোনও সাজানো ঘটনা নয়, দৈনন্দিন জীবনে প্রায়শই এদের মুখোমুখি হতে হয়। পরবর্তীকালে গার্গী বড় হয়ে পুরোপুরি এই গোয়েন্দা পেশায় মনোনিবেশ করেছে। পাঠকদের পরিচিত সেই গোয়েন্দা মেয়ে গার্গী শুরুর সময়ে কেমন ছিল, তারই আভাস রয়েছে "গোয়েন্দা গার্গী" বইয়ে। স্বাদু-টানটান রহস্য কাহিনি—শুরু করলে শেষ করতেই হবে।</br>এই বইতে গোয়েন্দা গার্গীর যে দশটি গল্প রয়েছে, সেগুলি হল- মুক্তোর মালায় দুটো হিরের টুকরো, কিংকর হত্যা, রহস্য, ধূমকেতু-রহস্য, গ্রহান্তরের প্রাণী, অপরাধী সনাক্তকরণ হিরের আংটি, দন্ত অন্তর্ধান রহস্য, ম্যাকবেথ অন্তর্ধান রহস্য, নেপথ্যে এক আততায়ী, পাহাড়খনির হিরে রহস্য',
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlPAKAw8LGLEr1gw_yFIzDbmKcfar5_mkA36TVv8ojgZU2IUgOKGM2Y2v_9QWhm7OltYo&usqp=CAU',
             published: 'August 22, 2022',
+            preference: 'sell',
             category: 'goyenda',
-            preference: 'lend',
             area: 'Basundhora',
-            price: '',
+            price: '20',
+        },
+        {
+            id: 7,
+            title: 'ডোপামিন ডিটক্স',
+            author: 'থিবো মেরিস',
+            translate: 'প্রিতম মুজতাহিদ',
+            description:
+                'আপনি কি গুরুত্বপূর্ণ কাজগুলো করার ক্ষেত্রে গড়িমসি ভাব করেন? প্রায়শই অস্থির বোধ করেন? হাতের কাজে মনোযোগ দিতে পারেন না? যেসব গুরুত্বপূর্ণ বিষয় জীবনকে উন্নত করতে পারে, সেগুলো কি আপনার ভেতরে কোনো উত্তেজনা সৃষ্টি করে না? </br>যদি ব্যাপারটা এমনই হয়, তাহলে সম্ভবতঃ আপনার ডোপামিন ডিটক্সের প্রয়োজন।</br>বর্তমান বিশ্বে আমাদেরকে বিক্ষিপ্ত করতে পারে এমন উপাদানের অভাব নেই। এগুলোকে এড়িয়ে গিয়ে আমাদের মূল লক্ষ্যে ফোকাস করা খুব কঠিন। এগুলো অবিরত আমাদেরকে প্রভাবিত করে, অস্থির করে তুলে। কেন এমনটা হয়- তা আমরা নিজেরাও জানি না। মূল লক্ষ্যে পৌঁছাতে আমাদের যখন কাজে মনোযোগ দেওয়া প্রয়োজন, তখন দেখা যায় আমাদের মনোযোগ অন্য বাজে কাজের দিকে সরে যাচ্ছে। লক্ষ্যে পৌঁছার জন্য যা করার কথা, আমরা তা করতে পারছি না। বরং বেড়াতে বের হয়ে যাচ্ছি, কফি সপে আড্ডায় মেতে ওঠছি বা তখনই ইমেইলগুলো খুলে দেখার কথা মনে পড়ে যাচ্ছে। চারপাশের সবকিছু তখন আমাদের কাছে দারুণ ভালো লাগার ব্যাপার হয়ে দাঁড়ায়। শুধু কর্তব্য কাজটার কথাই মনে থাকে না।',
+            image: Book1,
+            preference: 'sell',
+            published: '৩ দিন আগে',
+            category: 'thriller',
+            area: 'Mohammadpur',
+            price: '10',
         },
     ],
     products: {
@@ -192,6 +212,7 @@ const initialState = {
             desc: 'A rich gravy made of khus khus, coconut and milk that tastes best with koftas made from khoya. This velvety and creamy recipe will leave you licking your fingers. Makhmali kofte can be your go-to dish for dinner parties as this is quite different from other kofta recipes and extremely delicious.',
         },
     ],
+    selectedProduct: null,
 };
 
 const productShopSlice = createSlice({
@@ -210,10 +231,15 @@ const productShopSlice = createSlice({
             // Merge the action payload with the current state to update specific properties
             return action.payload;
         },
+        setProductDetails: (state, action) => {
+            state.selectedProduct = action.payload;
+        },
     },
 });
 export const selectProductShop = (state) => state.productShop;
 
 // Export the reducer and actions
-export const { updateProductShop, getProductShop } = productShopSlice.actions;
+export const { setProductDetails, updateProductShop, getProductShop } =
+    productShopSlice.actions;
+
 export default productShopSlice.reducer;

@@ -14,6 +14,11 @@ module.exports = {
 
                 'footer-texture': "url('/img/footer-texture.png')",
             },
+            lineClamp: {
+                8: '8',
+                9: '9',
+                10: '10',
+            },
         },
     },
     plugins: [
