@@ -1,6 +1,9 @@
 import { Tab } from '@headlessui/react';
 import { StarIcon } from '@heroicons/react/20/solid';
-import { Fragment } from 'react';
+import { Fragment, React, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+import { selectProductShop } from '../../../redux/reducers/productShopSlice';
 
 const product = {
     name: 'Application UI Icon Pack',
@@ -93,7 +96,25 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function SingleProduct() {
+export default function SingleProduct({ items }) {
+    const productShop = useSelector(selectProductShop);
+    const dispatch = useDispatch();
+    const [books, setBooks] = useState([]);
+    const { id } = useParams(); // Destructure the id parameter from the URL
+    const location = useLocation();
+    const productId = parseInt(id, 10);
+
+    console.log('location', location.state.id);
+    console.log('id', id);
+
+    // useEffect(() => {
+    //     // Use the filter function to update the books state
+    //     setBooks(...productShop.allBooks);
+    // }, [productShop.allBooks]);
+
+    // ... (rest of your component)
+    console.log('id', books.id);
+
     return (
         <div className='bg-white'>
             <div className='mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
@@ -101,11 +122,11 @@ export default function SingleProduct() {
                 <div className='lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16'>
                     {/* Product image */}
                     <div className='lg:col-span-4 lg:row-end-1'>
-                        <div className='aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100'>
+                        <div className='aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100 '>
                             <img
-                                src={product.imageSrc}
-                                alt={product.imageAlt}
-                                className='object-cover object-center'
+                                src={location.state.image}
+                                alt={location.state.title}
+                                className='object-contain object-center py-10'
                             />
                         </div>
                     </div>
@@ -115,7 +136,7 @@ export default function SingleProduct() {
                         <div className='flex flex-col-reverse'>
                             <div className='mt-4'>
                                 <h1 className='text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl'>
-                                    {product.name}
+                                    {location.state.title}
                                 </h1>
 
                                 <h2
@@ -125,12 +146,31 @@ export default function SingleProduct() {
                                     Product inhtmlFormation
                                 </h2>
                                 <p className='mt-2 text-sm text-gray-500'>
-                                    Version {product.version.name} (Updated{' '}
-                                    <time dateTime={product.version.datetime}>
-                                        {product.version.date}
+                                    <span className='font-semibold'>
+                                        Published:{' '}
+                                    </span>
+                                    <time dateTime={location.state.datetime}>
+                                        {location.state.published}
                                     </time>
-                                    )
                                 </p>
+                                <div className='flex '>
+                                    <p className='mt-2 text-sm text-gray-500'>
+                                        <span className='font-semibold'>
+                                            Author:{' '}
+                                        </span>
+                                        <span>{location.state.author}</span>
+                                    </p>
+                                    {location.state.translate && (
+                                        <p className='mt-2 text-sm text-gray-500 ml-8'>
+                                            <span className='font-semibold'>
+                                                Translated By:{' '}
+                                            </span>
+                                            <span>
+                                                {location.state.translate}
+                                            </span>
+                                        </p>
+                                    )}
+                                </div>
                             </div>
 
                             <div>
@@ -155,17 +195,20 @@ export default function SingleProduct() {
                             </div>
                         </div>
 
-                        <p className='mt-6 text-gray-500'>
-                            {product.description}
+                        <p className='mt-6 text-gray-500 line-clamp-9'>
+                            {location.state.description}
                         </p>
 
                         <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2'>
-                            <button
-                                type='button'
-                                className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50'
-                            >
-                                Pay {product.price}
-                            </button>
+                            {location.state.price && (
+                                <button
+                                    type='button'
+                                    className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50'
+                                >
+                                    Add to Cart
+                                </button>
+                            )}
+
                             <button
                                 type='button'
                                 className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50'

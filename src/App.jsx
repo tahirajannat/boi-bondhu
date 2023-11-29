@@ -32,6 +32,8 @@ function App() {
                     <Route path='/exchange' element={<Exchange />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/shop' element={<Archive />} />
+                    {/* <Route path='/shop/:id' element={<div>Single page</div>} /> */}
+                    <Route path='/shop/:id' element={<SingleProduct />} />
                     <Route path='/shop2' element={<Shop />} />
                     {/* <Route path='/itemSlug' element={<ItemSingle />} /> */}
                     <Route path='/itemSlug' element={<SingleProduct />} />

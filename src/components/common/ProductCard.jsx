@@ -5,131 +5,146 @@ import {
     FaRegBookmark,
     FaTwitter,
 } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { productData } from '../../utility/data';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function ProductCard() {
+import { Link, useLocation } from 'react-router-dom';
+
+import {
+    selectProductShop,
+    setProductDetails,
+} from '../../redux/reducers/productShopSlice';
+
+export default function ProductCard({ items, startIndex, endIndex }) {
+    const slicedBooks = items.slice(startIndex, endIndex);
+    const productShop = useSelector(selectProductShop);
+    const dispatch = useDispatch();
+    const history = useLocation();
+
+    const handleBuyNowClick = (product) => {
+        dispatch(setProductDetails(product));
+
+        // Redirect to the single product page
+        history.push('/shop/:id');
+    };
+    // console.log('history', history);
+    const getBackgroundImage = (index) => {
+        const images = [
+            'bg-product-bg-1',
+            'bg-product-bg-2',
+            'bg-product-bg-4',
+        ];
+        return images[index % images.length]; // Cycling through colors htmlFor each product
+    };
     return (
-        <div>
-            <div className=' items-center bg-white '>
-                <div className='container mx-auto '>
-                    <div className='grid grid-cols-12 gap-4'>
-                        {productData.slice(0, 4).map((index, key) => (
-                            <div className=' col-span-3 '>
-                                <div className='bg-gray-100 rounded-lg m-h-56  transhtmlForm hover:translate-y-1 shadow-xl transition duration-300'>
-                                    <figure className='mb-3 pt-3 relative'>
-                                        <img
-                                            src={index.image}
-                                            alt=''
-                                            className='h-44  ml-auto mr-auto'
-                                        />
-
-                                        <FaRegBookmark className='absolute top-4 left-4 cursor-pointer hover:text-yellow-500 duration-75 transition-all' />
-                                    </figure>
-                                    <div className='rounded-b-lg px-4 py-3  flex flex-col text-center relative border-t border-red-100'>
-                                        <div className=' absolute top-0 left-2/4 -translate-x-1/2 -translate-y-1/2 '>
-                                            <img
-                                                className='block h-16 sm:h-20 rounded-full mx-auto border-2 border-red-200'
-                                                src='https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4'
-                                                alt=''
-                                            />
-                                        </div>
-                                        <div>
-                                            <div className='mt-10'>
-                                                <h5 className='text-black text-xl font-bold leading-none capitalize my-3'>
-                                                    Book Title
-                                                </h5>
-
-                                                <p className='text-sm text-gray-400 leading-5 line-clamp-2 '>
-                                                    Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing
-                                                    elit. Explicabo fugit odio
-                                                    rem vero natus, ducimus sint
-                                                    non quia dicta excepturi
-                                                    accusantium illum soluta
-                                                    inventore doloremque
-                                                    consequuntur. Alias at
-                                                    aliquid quos!
-                                                </p>
-                                            </div>
-                                            {/* <div className='flex justify-between'>
-                                                <FaRegBookmark />
-                                                <button className='px-2 py-1 border border-yellow-600'>
-                                                    Details
-                                                </button>
-                                            </div> */}
-                                        </div>
-                                        <div className='py-2 text-center border-t border-red-100 mt-2'>
-                                            <span className='inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
-                                                #photography
-                                            </span>
-                                            <span className='inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2'>
-                                                #travel
-                                            </span>
-                                            <span className='inline-block bg-red-50 rounded-full px-2 py-1 text-xs font-semibold text-gray-700'>
-                                                #winter
-                                            </span>
-                                        </div>
-                                        <Link to='/itemSlug'>
-                                            <div className='inline-flex items-center text-center mx-auto my-2'>
-                                                {/* <div className="text-sm text-white font-light">Travel</div> */}
-                                                <div className=' flex text-center text-red-300  '>
-                                                    <a
-                                                        href='/#'
-                                                        className='p-2 mx-1 bg-white rounded-full  hover:shadow-xl   transition duration-300 justify-between'
-                                                    >
-                                                        <FaLinkedinIn />
-                                                    </a>
-                                                    <a
-                                                        href='/#'
-                                                        className='p-2 mx-1 bg-white rounded-full  hover:shadow-xl transition duration-300 justify-between'
-                                                    >
-                                                        <FaTwitter />
-                                                    </a>
-                                                    <a
-                                                        href='/#'
-                                                        className='p-2 mx-1 bg-white rounded-full  hover:shadow-xl  transition duration-300 justify-between'
-                                                    >
-                                                        <FaFacebookF />
-                                                    </a>
-                                                </div>
-
-                                                <button className='rounded-full bg-red-300 justify-between ml-1 text-white hover:bg-white hover:text-red-300 hover:shadow-xl focus:outline-none w-8 h-8 flex  transition duration-300'>
-                                                    <svg
-                                                        xmlns='http://www.w3.org/2000/svg'
-                                                        width='20'
-                                                        height='20'
-                                                        viewBox='0 0 24 24'
-                                                        fill='none'
-                                                        stroke='currentColor'
-                                                        strokeWidth='2'
-                                                        strokeLinecap='round'
-                                                        strokeLinejoin='round'
-                                                        className='stroke-current m-auto'
-                                                    >
-                                                        <line
-                                                            x1='12'
-                                                            y1='5'
-                                                            x2='12'
-                                                            y2='19'
-                                                        ></line>
-                                                        <line
-                                                            x1='5'
-                                                            y1='12'
-                                                            x2='19'
-                                                            y2='12'
-                                                        ></line>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </Link>
+        <>
+            {slicedBooks.map((item, index) => (
+                <div className='shadow mb-8 text-center '>
+                    <div
+                        key={index}
+                        className={`bg-slate-100  p-4 relative bg-cover  bg-center bg-no-repeat ${getBackgroundImage(
+                            index
+                        )}`}
+                    >
+                        <h2 className='focus:outline-none text-xl text-white my-2'>
+                            {item.author}
+                        </h2>
+                        <img
+                            alt='person capturing an image'
+                            src={item.image}
+                            className='focus:outline-none w-full h-40 object-contain'
+                        />
+                        <div className='bg-yellow-200 py-1 px-2 rounded-[2px] absolute top-2 right-2'>
+                            <p className='focus:outline-none text-xs text-yellow-900'>
+                                Featured
+                            </p>
+                        </div>
+                        <div className='absolute top-2 left-2'>
+                            <FaRegBookmark className=' text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all' />
+                        </div>
+                    </div>
+                    <div className='bg-white'>
+                        {/* <div className='flex items-center justify-between px-4 pt-4'>
+                            <div>
+                                <FaRegBookmark />
+                            </div>
+                            <div className='bg-yellow-200 py-1.5 px-4 rounded-[2px]'>
+                                <p className='focus:outline-none text-xs text-yellow-700'>
+                                    Featured
+                                </p>
+                            </div>
+                        </div> */}
+                        <div className='px-4 pt-4 pb-2'>
+                            <div className='flex items-center'>
+                                <h2 className='focus:outline-none text-lg text-gray-800 font-semibold'>
+                                    {item.title}
+                                </h2>
+                                <p className='focus:outline-none text-xs text-gray-600  pl-5'>
+                                    {item.published}
+                                </p>
+                            </div>
+                            <p className='focus:outline-none text-xs text-gray-800  mt-2 text-left line-clamp-2'>
+                                {item.description}
+                            </p>
+                            <div className='flex justify-between mt-4'>
+                                <div>
+                                    <p className='focus:outline-none text-xs text-gray-600  px-2 bg-gray-200 py-1'>
+                                        #{item.category}
+                                    </p>
+                                </div>
+                                <h2 className='focus:outline-none text-teal-500 text-xs font-semibold'>
+                                    {item.area}
+                                </h2>
+                            </div>
+                            <div className='flex items-center justify-between py-2 border-b border-gray-100'>
+                                <h2 className='focus:outline-none text-teal-500 text-base font-bold'>
+                                    {/* {item.price} */}
+                                    $50
+                                </h2>
+                                <Link state={item} to={`/shop/${item.id}`}>
+                                    <button
+                                        className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'
+                                        // onClick={() => handleBuyNowClick(item)}
+                                    >
+                                        Buy Now
+                                    </button>
+                                </Link>
+                                <button
+                                    type='button'
+                                    className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50'
+                                    // onClick={handleBuyNowClick}s
+                                >
+                                    {/* Pay {product.price} */}
+                                </button>
+                            </div>
+                            <Link to='/itemSlug'>
+                                <div className='inline-flex items-center text-center mx-auto my-2 '>
+                                    {/* <div className="text-sm text-white font-light">Travel</div> */}
+                                    <div className=' flex text-center '>
+                                        <a
+                                            href='/#'
+                                            className='mx-2  justify-between'
+                                        >
+                                            <FaLinkedinIn className='text-sm hover:shadow-xl hover:text-teal-600  transition duration-300' />
+                                        </a>
+                                        <a
+                                            href='/#'
+                                            className='mx-2 rounded-full  justify-between'
+                                        >
+                                            <FaTwitter className='text-sm hover:shadow-xl  hover:text-teal-600 transition duration-300 ' />
+                                        </a>
+                                        <a
+                                            href='/#'
+                                            className='mx-2 rounded-full   justify-between'
+                                        >
+                                            <FaFacebookF className='text-sm hover:shadow-xl  hover:text-teal-600  transition duration-300' />
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            ))}
+        </>
     );
 }

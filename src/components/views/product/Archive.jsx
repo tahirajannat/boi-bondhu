@@ -92,13 +92,17 @@ export default function Archive() {
                 <h2 className='text-xl font-bold text-gray-900'></h2>
 
                 <div className='grid grid-cols-3 gap-6 mt-10'>
-                    {books.length > 0 ? (
-                        <BookCard items={books} />
-                    ) : (
-                        <div className='col-span-3 mt-32'>
-                            <NotFound />
-                        </div>
-                    )}
+                    {/* <ProductCard items={books} /> */}
+
+                    <>
+                        {books.length > 0 && books ? (
+                            <BookCard items={books} />
+                        ) : (
+                            <div className='col-span-3 mt-32'>
+                                <NotFound />
+                            </div>
+                        )}
+                    </>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ export default function Borrow() {
     const [selectedAreas, setSelectedAreas] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedPreferences, setSelectedPreferences] = useState([]);
+    const [selectedPrices, setSelectedPrices] = useState([]);
 
     const handleAreaChange = (event) => {
         const { value, checked } = event.target;
@@ -38,7 +39,12 @@ export default function Borrow() {
                 : prevPreferences.filter((preference) => preference !== value)
         );
     };
+    useEffect(() => {
+        // Use the spread operator to create a new array with the elements of productShop.allBooks
+        setSelectedPrices([...productShop.allBooks]);
+    }, [productShop.allBooks]);
 
+    console.log('first price', selectedPrices.price);
     useEffect(() => {
         // Use the filter function to update the books state
         setBooks(
@@ -92,6 +98,11 @@ export default function Borrow() {
                 <h2 className='text-xl font-bold text-gray-900'></h2>
 
                 <div className='grid grid-cols-3 gap-6 mt-10'>
+                    {/* {books.length > 0 && books.proce.length === 0 ? (
+                        <BookCard items={books} />
+                    ) : (
+                        'empty'
+                    )} */}
                     {books.length > 0 ? (
                         <BookCard items={books} />
                     ) : (

@@ -10,11 +10,17 @@ import { Link } from 'react-router-dom';
 export default function BookCard({ items, startIndex, endIndex }) {
     const slicedBooks = items.slice(startIndex, endIndex);
 
+    // const handleBuyNowClick = (product) => {
+    //     dispatch(setProductDetails(product));
+
+    //     // Redirect to the single product page
+    //     history.push('/shop/:id');
+    // };
+    // // console.log('history', history);
     const getBackgroundImage = (index) => {
         const images = [
             'bg-product-bg-1',
             'bg-product-bg-2',
-            // 'bg-product-bg-3',
             'bg-product-bg-4',
         ];
         return images[index % images.length]; // Cycling through colors htmlFor each product
@@ -69,31 +75,83 @@ export default function BookCard({ items, startIndex, endIndex }) {
                             <p className='focus:outline-none text-xs text-gray-800  mt-2 text-left line-clamp-2'>
                                 {item.description}
                             </p>
-                            <div className='flex justify-between mt-4'>
-                                <div>
-                                    <p className='focus:outline-none text-xs text-gray-600  px-2 bg-gray-200 py-1'>
-                                        #{item.category}
-                                    </p>
-                                </div>
-                                {item.preference === 'borrow' ? (
-                                    <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
-                                        Borrow
-                                    </button>
-                                ) : item.preference === 'exchange' ? (
-                                    <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
-                                        Exchange
-                                    </button>
-                                ) : item.preference === 'lend' ? (
-                                    <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
-                                        Lend
-                                    </button>
-                                ) : null}
-                            </div>
-                            <div className='flex items-center justify-between py-2 border-b border-gray-100'>
-                                <h2 className='focus:outline-none text-teal-500 text-xs font-semibold'>
-                                    {item.area}
-                                </h2>
-                            </div>
+                            {item.price ? (
+                                <>
+                                    <div className='flex justify-between mt-4'>
+                                        <div>
+                                            <p className='focus:outline-none text-xs text-gray-600  px-2 bg-gray-200 py-1'>
+                                                #{item.category}
+                                            </p>
+                                        </div>
+                                        {item.preference === 'borrow' ? (
+                                            <Link
+                                                state={item}
+                                                to={`/shop/${item.id}`}
+                                            >
+                                                {' '}
+                                                <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
+                                                    Borrow
+                                                </button>
+                                            </Link>
+                                        ) : item.preference === 'exchange' ? (
+                                            <Link
+                                                state={item}
+                                                to={`/shop/${item.id}`}
+                                            >
+                                                {' '}
+                                                <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
+                                                    Exchange
+                                                </button>
+                                            </Link>
+                                        ) : item.preference === 'lend' ? (
+                                            <Link
+                                                state={item}
+                                                to={`/shop/${item.id}`}
+                                            >
+                                                <button className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'>
+                                                    Lend
+                                                </button>
+                                            </Link>
+                                        ) : null}
+                                    </div>
+                                    <div className='flex items-center justify-between py-2 border-b border-gray-100'>
+                                        <h2 className='focus:outline-none text-teal-500 text-xs font-semibold'>
+                                            {item.area}
+                                        </h2>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className='flex justify-between mt-4'>
+                                        <div>
+                                            <p className='focus:outline-none text-xs text-gray-600  px-2 bg-gray-200 py-1'>
+                                                #{item.category}
+                                            </p>
+                                        </div>
+                                        <h2 className='focus:outline-none text-teal-500 text-xs font-semibold'>
+                                            {item.area}
+                                        </h2>
+                                    </div>
+                                    <div className='flex items-center justify-between py-2 border-b border-gray-100'>
+                                        <h2 className='focus:outline-none text-teal-500 text-base font-bold'>
+                                            {/* {item.price} */}
+                                            $50
+                                        </h2>
+                                        <Link
+                                            state={item}
+                                            to={`/shop/${item.id}`}
+                                        >
+                                            <button
+                                                className='bg-teal-600 text-white px-2 py-1 text-xs font-bold rounded-[4px] border hover:border-teal-600 hover:bg-slate-100 hover:text-teal-600 hover:shadow-xl focus:outline-none flex transition duration-300'
+                                                // onClick={() => handleBuyNowClick(item)}
+                                            >
+                                                Buy Now
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </>
+                            )}
+
                             <Link to='/itemSlug'>
                                 <div className='inline-flex items-center text-center mx-auto my-2 '>
                                     {/* <div className="text-sm text-white font-light">Travel</div> */}
