@@ -13,26 +13,29 @@ export default function Menu(props) {
                         <FaBars />
                     </label>
 
-                    <ul className=' menu flex items-center text-black'>
-                        <a href='/' className='relative mx-4'>
+                    <ul className='menu flex items-center text-black'>
+                        <a href='/' className='relative mx-5'>
                             Home
                         </a>
-                        <a href='/lend' className='relative mx-4'>
-                            Lend Books
+                        <a href='/about-boibondhu' className='relative mx-5'>
+                            About Us
+                        </a>
+                        <a href='/lend' className='relative mx-5'>
+                            Lend
                         </a>
 
-                        <a href='/borrow' className='relative mx-4'>
-                            Borrow Books
+                        <a href='/borrow' className='relative mx-5'>
+                            Borrow
                         </a>
-                        <a href='/exchange' className='relative mx-4'>
+                        <a href='/exchange' className='relative mx-5'>
                             Exchange
                         </a>
 
-                        <a href='/shop' className=' relative'>
-                            Shop
+                        <a href='/shop' className=' relative mx-5'>
+                            Buy & Sell
                         </a>
-                        <a href='/contact' className=' relative mx-4'>
-                            Contact Us
+                        <a href='/contact' className=' relative mx-5'>
+                            Contact
                         </a>
                     </ul>
                 </nav>

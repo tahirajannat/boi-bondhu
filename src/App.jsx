@@ -13,6 +13,7 @@ import Menu from './components/header/Menu';
 import Home from './components/views/Home';
 import Lend from './components/views/Lend';
 import Shop from './components/views/Shop';
+import AboutUs from './components/views/about/AboutUs';
 import DashboardMain from './components/views/dashboard/DashboardMain';
 import Archive from './components/views/product/Archive';
 import Cart from './components/views/product/Cart';
@@ -30,6 +31,7 @@ function App() {
                     <Route path='/lend' element={<Lend />} />
                     <Route path='/borrow' element={<Borrow />} />
                     <Route path='/exchange' element={<Exchange />} />
+                    <Route path='/about-boibondhu' element={<AboutUs />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/shop' element={<Archive />} />
                     {/* <Route path='/shop/:id' element={<div>Single page</div>} /> */}
