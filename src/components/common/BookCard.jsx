@@ -75,7 +75,7 @@ export default function BookCard({ items, startIndex, endIndex }) {
                             <p className='focus:outline-none text-xs text-gray-800  mt-2 text-left line-clamp-2'>
                                 {item.description}
                             </p>
-                            {item.price ? (
+                            {item.price === '' ? (
                                 <>
                                     <div className='flex justify-between mt-4'>
                                         <div>
