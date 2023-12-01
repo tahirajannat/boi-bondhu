@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 export default function BookCard({ items, startIndex, endIndex }) {
     const slicedBooks = items.slice(startIndex, endIndex);
+    const displayedItems = endIndex ? items.slice(0, endIndex) : items;
 
     // const handleBuyNowClick = (product) => {
     //     dispatch(setProductDetails(product));
@@ -43,11 +44,14 @@ export default function BookCard({ items, startIndex, endIndex }) {
                             src={item.image}
                             className='focus:outline-none w-full h-40 object-contain'
                         />
-                        <div className='bg-yellow-200 py-1 px-2 rounded-[2px] absolute top-2 right-2'>
-                            <p className='focus:outline-none text-xs text-yellow-900'>
-                                Featured
-                            </p>
-                        </div>
+                        {item.tag && (
+                            <div className='bg-yellow-200 py-1 px-2 rounded-[2px] absolute top-2 right-2'>
+                                <p className='focus:outline-none text-xs text-yellow-900'>
+                                    Featured
+                                </p>
+                            </div>
+                        )}
+
                         <div className='absolute top-2 left-2'>
                             <FaRegBookmark className=' text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all' />
                         </div>
