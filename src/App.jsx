@@ -14,6 +14,8 @@ import Home from './components/views/Home';
 import Lend from './components/views/Lend';
 import Shop from './components/views/Shop';
 import AboutUs from './components/views/about/AboutUs';
+import BlogMain from './components/views/blog/BlogMain';
+import BlogSingle from './components/views/blog/BlogSingle';
 import DashboardMain from './components/views/dashboard/DashboardMain';
 import Archive from './components/views/product/Archive';
 import Cart from './components/views/product/Cart';
@@ -34,6 +36,8 @@ function App() {
                     <Route path='/about-boibondhu' element={<AboutUs />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/shop' element={<Archive />} />
+                    <Route path='/blog' element={<BlogMain />} />
+                    <Route path='/single' element={<BlogSingle />} />
                     {/* <Route path='/shop/:id' element={<div>Single page</div>} /> */}
                     <Route path='/shop/:id' element={<SingleProduct />} />
                     <Route path='/shop2' element={<Shop />} />
