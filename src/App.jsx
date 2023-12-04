@@ -25,8 +25,8 @@ import SingleProduct from './components/views/product/SingleProduct';
 function App() {
     return (
         <div className='App'>
-            <MainNav />
             <Router>
+                <MainNav />
                 <Menu />
                 <Routes>
                     <Route path='/' element={<Home />} />
@@ -40,6 +40,7 @@ function App() {
                     <Route path='/single' element={<BlogSingle />} />
                     {/* <Route path='/shop/:id' element={<div>Single page</div>} /> */}
                     <Route path='/shop/:id' element={<SingleProduct />} />
+                    {/* <Route path='/:id' element={<SingleProduct />} /> */}
                     <Route path='/shop2' element={<Shop />} />
                     {/* <Route path='/itemSlug' element={<ItemSingle />} /> */}
                     <Route path='/itemSlug' element={<SingleProduct />} />

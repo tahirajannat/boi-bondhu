@@ -308,3 +308,16 @@ export const productsList = [
         category: 'second',
     },
 ];
+export const preferences = [
+    { id: 1, name: 'Lend' },
+    { id: 2, name: 'Borrow' },
+    { id: 3, name: 'Exchange' },
+    { id: 4, name: 'Buy & Sell' },
+];
+export const tags = [
+    { id: 1, name: 'Featured' },
+    { id: 2, name: 'Popular' },
+    { id: 3, name: 'New' },
+    { id: 4, name: 'Best seller' },
+    { id: 4, name: 'Best Reviwed' },
+];

@@ -16,6 +16,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Fragment, useState } from 'react';
 import UserDataTable from '../../table/UserDataTable';
+import DashboardUser from '../DashboardUser';
 import Dashboard from './Dashboard';
 
 const navigation = [
@@ -403,10 +404,10 @@ export default function DashboardMain() {
                         </div>
                     </div>
 
-                    <main className='py-10 h-screen'>
+                    <main className='py-10 h- mb-10'>
                         <div className='px-4 sm:px-6 lg:px-8 grid grid-cols-4 gap-6'>
-                            <div className='col-span-1'>
-                                <Dashboard />
+                            <div className='col-span-4'>
+                                <DashboardUser />
                             </div>
                             <div className='col-span-1'>
                                 <Dashboard />

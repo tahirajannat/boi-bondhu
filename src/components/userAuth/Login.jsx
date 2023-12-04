@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
+
 // import {
 //   passwordDecryption,
 //   passwordEncryption,
 // } from "../utility/passwordEncryption";
 export default function Login() {
+    const navigate = useNavigate();
+
     const [showModal, setShowModal] = useState(false);
 
     const [email, setEmail] = useState('');
@@ -34,10 +38,12 @@ export default function Login() {
                 /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             if (emailRegex.test(email)) {
                 setEmailError('');
-                if (email === 'admin@demo.com') {
+                if (email === 'admin@gmail.com') {
                     setEmailError('');
                     if (password === 'demo') {
                         setSuccessMsg('You are succesfully logged in');
+                        navigate('/dashboard');
+                        setShowModal(false);
                     } else {
                         setPasswordError('password does not match');
                     }
@@ -97,6 +103,14 @@ export default function Login() {
         //   }
         // };
     };
+    const navigateHome = () => {
+        if (email !== false) {
+            navigate('/dashboard');
+        } else {
+            console.log('Authentication error');
+        }
+        setShowModal(false);
+    };
 
     return (
         <>
@@ -115,7 +129,7 @@ export default function Login() {
                                 <button
                                     className='text-red-500 background-transparent font-bold uppercase py-2 text-2xl outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                                     type='button'
-                                    onClick={() => setShowModal(false)}
+                                    // onClick={navigateHome}
                                 >
                                     <RiCloseCircleFill />
                                 </button>
@@ -126,7 +140,7 @@ export default function Login() {
                                 </h2>
 
                                 {successMsg && (
-                                    <div className='text-white bg-teal-500 py-4 mb'>
+                                    <div className='text-white bg-teal-500 py-2 mb-4 text-center'>
                                         {successMsg}
                                     </div>
                                 )}
@@ -182,17 +196,25 @@ export default function Login() {
                                             {passwordError}
                                         </div>
                                     )}
-                                    <button className='bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded'>
-                                        Login
-                                    </button>
+                                    <div className='block text-center mx-auto'>
+                                        <button
+                                            className='bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded  '
+                                            onClick={handlehtmlFormSubmit}
+                                        >
+                                            Login
+                                        </button>
+                                        <div className='my-4'>
+                                            <a
+                                                className='text-blue-700 text-left text-sm'
+                                                href='/login'
+                                            >
+                                                Forgot password?
+                                            </a>
+                                        </div>
+                                    </div>
                                 </htmlForm>
-                                <a
-                                    className='text-blue-700 text-left text-sm'
-                                    href='/login'
-                                >
-                                    htmlForgot password?
-                                </a>
-                                <p className='text-sm text-center mt-4'>
+
+                                <p className='text-xs text-center mt-4'>
                                     By signing up, you agree to our{' '}
                                     <a
                                         href='#'

@@ -6,6 +6,7 @@ import Login from '../userAuth/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProductShop } from '../../redux/reducers/productShopSlice';
 import SignUp from '../userAuth/SignUp';
+import SearchPage from '../views/SearchPage';
 
 export default function MainNav() {
     const dispatch = useDispatch();
@@ -38,7 +39,8 @@ export default function MainNav() {
                     </a>
                 </div>
                 <div className='col-span-4 mt-2'>
-                    <htmlForm>
+                    <SearchPage />
+                    {/* <htmlForm>
                         <div className='flex'>
                             <div className='relative w-full'>
                                 <input
@@ -71,7 +73,7 @@ export default function MainNav() {
                                 </button>
                             </div>
                         </div>
-                    </htmlForm>
+                    </htmlForm> */}
                     {/* <SearchBooks
                         searchp={search}
                         handelserchp={handelserch}
