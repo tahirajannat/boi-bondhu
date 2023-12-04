@@ -91,6 +91,7 @@ export default function Home() {
                     <BannerSlider />
                 </div>
             </div>
+
             <div className='container mx-auto my-16'>
                 {featured.length > 0 && (
                     <>

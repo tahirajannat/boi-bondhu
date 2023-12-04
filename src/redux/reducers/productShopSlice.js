@@ -97,7 +97,7 @@ const initialState = {
             published: '৩ দিন আগে',
             category: 'thriller',
             tag: 'featured',
-            area: 'Mohammadpur',
+            area: 'Savar',
             price: '10',
         },
     ],
