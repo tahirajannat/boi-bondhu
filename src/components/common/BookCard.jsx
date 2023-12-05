@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     FaFacebookF,
     FaLinkedinIn,
@@ -7,9 +7,15 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-export default function BookCard({ items, startIndex, endIndex }) {
+export default function BookCard({
+    items,
+    startIndex,
+    endIndex,
+    addToBookmark,
+}) {
     const slicedBooks = items.slice(startIndex, endIndex);
     const displayedItems = endIndex ? items.slice(0, endIndex) : items;
+    const [bookmarkCount, setBookmarkCount] = useState(0);
 
     // const handleBuyNowClick = (product) => {
     //     dispatch(setProductDetails(product));
@@ -25,6 +31,10 @@ export default function BookCard({ items, startIndex, endIndex }) {
             'bg-product-bg-4',
         ];
         return images[index % images.length]; // Cycling through colors htmlFor each product
+    };
+    const handleAddToBookmark = (item) => {
+        // addToBookmark(item);
+        setBookmarkCount((prevCount) => prevCount + 1);
     };
     return (
         <>
@@ -53,7 +63,12 @@ export default function BookCard({ items, startIndex, endIndex }) {
                         )}
 
                         <div className='absolute top-2 left-2'>
-                            <FaRegBookmark className=' text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all' />
+                            <FaRegBookmark
+                                className='text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all'
+                                onClick={() => handleAddToBookmark(item)}
+                            />
+
+                            {/* <Bookmark /> */}
                         </div>
                     </div>
                     <div className='bg-white'>

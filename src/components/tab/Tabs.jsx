@@ -4,6 +4,7 @@ export default function Tabs({
     onChange,
     children,
     displayButton = false,
+    link = '/borrow',
 }) {
     return (
         <>
@@ -24,9 +25,11 @@ export default function Tabs({
                     ))}
                 </div>
                 {displayButton ? (
-                    <button className='px-2 py-1 h-9 block text-sm font-bold rounded-[4px] text-teal-600 border border-teal-600 hover:bg-slate-100 duration-75 transition-all '>
-                        View All
-                    </button>
+                    <a href={link}>
+                        <button className='px-2 py-1 h-9 block text-sm font-bold rounded-[4px] text-teal-600 border border-teal-600 hover:bg-slate-100 duration-75 transition-all '>
+                            View All
+                        </button>
+                    </a>
                 ) : null}
             </div>
             <div className=''>{children[active]}</div>

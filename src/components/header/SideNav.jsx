@@ -27,7 +27,7 @@ export default function SideNav({ title }) {
 
     // Assuming each product has a 'preference' property
     const preferences = products.map((product) => product.preference);
-    console.log('all preferences', preferences);
+    // console.log('all preferences', preferences);
 
     const preferenceCounts = preferences.reduce((counts, preference) => {
         counts[preference] = (counts[preference] || 0) + 1;
@@ -38,9 +38,10 @@ export default function SideNav({ title }) {
         exchange: exchangeCount = 0,
         lend: lendCount = 0,
         borrow: borrowCount = 0,
+        buySell: buySellCount = 0,
     } = preferenceCounts;
 
-    const totalCount = exchangeCount + lendCount + borrowCount;
+    // const totalCount = exchangeCount + lendCount + borrowCount;
     const navigation = [
         {
             name: 'Exchange',
@@ -67,7 +68,7 @@ export default function SideNav({ title }) {
             name: 'Buy & Sell',
             href: '/shop',
             icon: HiOutlineTag,
-            count: totalCount,
+            count: buySellCount,
             current: false,
         },
     ];
