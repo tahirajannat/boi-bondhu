@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import Accordion from '../common/Accordion';
 
-export default function FilterPreferences({ items, onChange }) {
+export default function FilterPreferences({
+    items,
+    onChange,
+    endIndex,
+    startIndex,
+}) {
     const [isOpen, setIsOpen] = useState(false);
+    const slicedBooks = items.slice(startIndex, endIndex);
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
@@ -17,7 +23,7 @@ export default function FilterPreferences({ items, onChange }) {
             {isOpen && (
                 <div className='pt-6' id='filter-section-0'>
                     <div className='space-y-4'>
-                        {items.map((item) => (
+                        {slicedBooks.map((item) => (
                             <div className='flex items-center' key={item}>
                                 <input
                                     id={item}

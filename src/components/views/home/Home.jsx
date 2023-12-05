@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Ad from '../../assets/images/ad.png';
-import { selectProductShop } from '../../redux/reducers/productShopSlice';
-import BannerSlider from '../common/BannerSlider';
-import BookCard from '../common/BookCard';
-import TitleSection from '../common/TitleSection';
-import SideNav from '../header/SideNav';
-import ListedCatecoryItem from './home/ListedCatecoryItem';
+import Ad from '../../../assets/images/ad.png';
+import { selectProductShop } from '../../../redux/reducers/productShopSlice';
+import BannerSlider from '../../common/BannerSlider';
+import BookCard from '../../common/BookCard';
+import TitleSection from '../../common/TitleSection';
+import SideNav from '../../header/SideNav';
+import ListedCatecoryItem from './ListedCatecoryItem';
 
 export default function Home() {
     const productShop = useSelector(selectProductShop);
@@ -17,6 +17,27 @@ export default function Home() {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedPreferences, setSelectedPreferences] = useState([]);
     const [selectedPrices, setSelectedPrices] = useState([]);
+    const [products, setProducts] = useState(productShop.allBooks);
+    const [tags, setTags] = useState([productShop.allBooks]);
+
+    const preference = products.map((product) => product.tag);
+    console.log('all preferences', preference);
+
+    useEffect(() => {
+        setTags(filterFeatured(productShop.allBooks, preference));
+    }, [productShop.allBooks]);
+    console.log('Tags: ', tags);
+
+    const filterFeatured = (books, preferences) => {
+        let filterFeatured = books;
+        if (preferences.length > 0) {
+            filterFeatured = filterFeatured.filter(
+                (book) => book.tag === 'featured'
+            );
+        }
+
+        return filterFeatured;
+    };
 
     const handlePreferenceChange = (event) => {
         const { value, checked } = event.target;
@@ -27,13 +48,11 @@ export default function Home() {
         );
     };
     useEffect(() => {
-        // Use the spread operator to create a new array with the elements of productShop.allBooks
         setSelectedPrices([...productShop.allBooks]);
     }, [productShop.allBooks]);
 
     console.log('first price', selectedPrices.price);
     useEffect(() => {
-        // Use the filter function to update the books state
         setBooks(
             filterBooks(
                 productShop.allBooks,
@@ -93,33 +112,23 @@ export default function Home() {
             </div>
 
             <div className='container mx-auto my-16'>
-                {featured.length > 0 && (
+                {tags.length > 0 && (
                     <>
-                        <TitleSection title={'Featured Books'} />
+                        <TitleSection
+                            title={'Featured Books'}
+                            link={'/borrow'}
+                        />
                         <div className='grid grid-cols-4 gap-6'>
-                            <BookCard items={featured} endIndex={4} />
+                            <BookCard items={tags} endIndex={4} />
                         </div>
                     </>
                 )}
-
-                {/* <TitleSection title={'Featured Books'} />
-                <div className='grid grid-cols-4 gap-6'>
-                    {featured.tag && <BookCard items={featured} endIndex={4} />}
-                </div> */}
             </div>
             <div className='container mx-auto my-16'>
-                {/* <TitleSection title={' All Listed Books'} /> */}
-
-                {/* <ProductCard /> */}
-                {/* <ProductSlider /> */}
                 <div className=' gap-6'>
                     <ListedCatecoryItem />
-                    {/* <ProductCard /> */}
                 </div>
             </div>
-            {/* <Filter /> */}
-            {/* <ItemsCard /> */}
-            {/* <Testimonial /> */}
         </div>
     );
 }

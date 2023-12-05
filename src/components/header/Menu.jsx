@@ -27,7 +27,7 @@ export default function Menu(props) {
                         {/* <a href='/borrow' className='relative mx-5'>
                             Borrow
                         </a> */}
-                        <a href='/borrow' className='relative mx-5'>
+                        <a href='/book-share' className='relative mx-5'>
                             Bookshare
                         </a>
 

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectProductShop } from '../../../redux/reducers/productShopSlice';
-import BookCard from '../../common/BookCard';
-import NotFound from '../../common/NotFound';
-import Sidebar from '../Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProductShop } from '../../../../redux/reducers/productShopSlice';
+import BookCard from '../../../common/BookCard';
+import NotFound from '../../../common/NotFound';
+import Sidebar from '../../Sidebar';
 
-export default function Archive() {
+export default function Bookshare() {
     const productShop = useSelector(selectProductShop);
+    const dispatch = useDispatch();
     const [selectedAreas, setSelectedAreas] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedPreferences, setSelectedPreferences] = useState([]);
     const [selectedPrices, setSelectedPrices] = useState([]);
     const [buySell, setBuySell] = useState([]);
     const [books, setBooks] = useState(buySell);
@@ -17,19 +19,27 @@ export default function Archive() {
 
     const preferences = products.map((product) => product.preference);
     console.log('all preferences', preferences);
+
     const filterBuySell = (buySell, preferences) => {
-        let filterBuySell = buySell;
+        let filteredBuySell = buySell;
         if (preferences.length > 0) {
-            filterBuySell = filterBuySell.filter(
-                (book) => book.preference === 'buySell'
+            filteredBuySell = filteredBuySell.filter(
+                (book) =>
+                    book.preference === 'borrow' ||
+                    book.preference === 'exchange' ||
+                    book.preference === 'lend'
             );
         }
 
-        return filterBuySell;
+        return filteredBuySell;
     };
+
     useEffect(() => {
         setBuySell(filterBuySell(productShop.allBooks, preferences));
     }, [productShop.allBooks]);
+
+    console.log('buySell', buySell);
+
     const handleAreaChange = (event) => {
         const { value, checked } = event.target;
         setSelectedAreas((prevAreas) =>
@@ -47,14 +57,38 @@ export default function Archive() {
                 : prevCategories.filter((category) => category !== value)
         );
     };
-
+    const handlePreferenceChange = (event) => {
+        const { value, checked } = event.target;
+        setSelectedPreferences((prevPreferences) =>
+            checked
+                ? [...prevPreferences, value]
+                : prevPreferences.filter((preference) => preference !== value)
+        );
+    };
     useEffect(() => {
-        // setBuySell(filterBuySell(productShop.allBooks, preferences));
-        setBooks(filterBooks(buySell, selectedAreas, selectedCategories));
-    }, [buySell, selectedAreas, selectedCategories]);
+        // Use the spread operator to create a new array with the elements of productShop.allBooks
+        setSelectedPrices([...productShop.allBooks]);
+    }, [productShop.allBooks]);
 
-    console.log('buySell', buySell);
-    const filterBooks = (buySell, selectedAreas, selectedCategories) => {
+    console.log('first price', selectedPrices.price);
+    useEffect(() => {
+        // Use the filter function to update the books state
+        setBooks(
+            filterBooks(
+                buySell,
+                selectedAreas,
+                selectedCategories,
+                selectedPreferences
+            )
+        );
+    }, [buySell, selectedAreas, selectedCategories, selectedPreferences]);
+
+    const filterBooks = (
+        buySell,
+        selectedAreas,
+        selectedCategories,
+        selectedPreferences
+    ) => {
         let filteredBooks = buySell;
 
         if (selectedAreas.length > 0) {
@@ -68,25 +102,33 @@ export default function Archive() {
                 selectedCategories.includes(book.category)
             );
         }
+        if (selectedPreferences.length > 0) {
+            filteredBooks = filteredBooks.filter((book) =>
+                selectedPreferences.includes(book.preference)
+            );
+        }
 
         return filteredBooks;
     };
-    console.log('first book selected', books);
-    console.log(' book areas', selectedPrices);
+
     return (
-        <div className='container mx-auto px-20 grid grid-cols-12 gap-6'>
+        <div className='container  mx-auto px-20 grid grid-cols-12 gap-6'>
             <div className='col-span-3 bg-gray-50 mt-10'>
                 <Sidebar
-                    filterPreference={false}
                     onCategoryChange={handleCategoryChange}
                     onAreaChange={handleAreaChange}
+                    onPreferenceChange={handlePreferenceChange}
                 />
             </div>
-            <div className='col-span-9'>
-                {/* You can add a title here if needed */}
-                {/* <h2 className='text-xl font-bold text-gray-900'>Title</h2> */}
+            <div className='col-span-9 '>
+                <h2 className='text-xl font-bold text-gray-900'></h2>
 
                 <div className='grid grid-cols-3 gap-6 my-16'>
+                    {/* {books.length > 0 && books.proce.length === 0 ? (
+                        <BookCard items={books} />
+                    ) : (
+                        'empty'
+                    )} */}
                     {books.length > 0 ? (
                         <BookCard items={books} />
                     ) : (
