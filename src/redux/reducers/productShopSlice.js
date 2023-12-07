@@ -217,6 +217,7 @@ const initialState = {
         },
     ],
     selectedProduct: null,
+    wishlistItems: [],
 };
 
 const productShopSlice = createSlice({
