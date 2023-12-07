@@ -1,6 +1,6 @@
-import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { FaBars } from 'react-icons/fa';
-import { GoHeart } from 'react-icons/go';
+import { GoHeartFill } from 'react-icons/go';
+import { MdShoppingCart } from 'react-icons/md';
 
 export default function Menu(props) {
     return (
@@ -45,29 +45,30 @@ export default function Menu(props) {
                     </ul>
                 </nav>
                 <div className='ml-4 lg:ml-6 flex'>
-                    <a href='#' className='group -m-2 flex items-center p-2'>
-                        <ShoppingBagIcon
-                            className='h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500'
-                            aria-hidden='true'
-                        />
-                        <span className='ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800'>
-                            0
-                        </span>
-                        <span className='sr-only'>items in cart, view bag</span>
-                    </a>
-                    <a
-                        href='#'
-                        className='group -m-2 flex items-center p-2 relative'
-                    >
-                        <GoHeart
-                            className='h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500'
-                            aria-hidden='true'
-                        />
-                        <span className='absolute right-0 top-0 bg-teal-600 w-4 h-4 rounded-full items-center text-white text-sm font-medium group-hover:text-gray-800'>
-                            0
-                        </span>
-                        <span className='sr-only'>items in cart, view bag</span>
-                    </a>
+                    <li class='font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700'>
+                        <a
+                            href='#'
+                            role='button'
+                            class='relative flex items-center'
+                        >
+                            <MdShoppingCart className='text-[30px] flex-shrink-0 text-gray-400 group-hover:text-gray-500' />
+                            <span class='absolute -right-1  -top-0.5 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-xs leading-tight text-center'>
+                                5
+                            </span>
+                        </a>
+                    </li>
+                    <li class='font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700'>
+                        <a
+                            href='#'
+                            role='button'
+                            class='relative flex items-center'
+                        >
+                            <GoHeartFill className='text-2xl flex-shrink-0 text-gray-400 group-hover:text-gray-500' />
+                            <span class='absolute -right-2  -top-0.5 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-xs leading-tight text-center'>
+                                5
+                            </span>
+                        </a>
+                    </li>
                 </div>
             </div>
         </header>
