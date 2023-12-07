@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { GoHeartFill } from 'react-icons/go';
 import { MdShoppingCart } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProductShop } from '../../redux/reducers/productShopSlice';
 
 export default function Menu(props) {
+    const productShop = useSelector(selectProductShop);
+    const dispatch = useDispatch();
+    const [books, setBooks] = useState(productShop.wishlistItems);
+    console.log('bookmarked product', books.length);
     return (
         <header className='bg-gray-200 md:sticky top-0  border-b border-red-300 shadow-lg transition-shadow font-serif z-20'>
             <div className='container mx-auto px-20 py-4  gap-4 flex justify-between'>
@@ -53,7 +60,7 @@ export default function Menu(props) {
                         >
                             <MdShoppingCart className='text-[30px] flex-shrink-0 text-gray-400 group-hover:text-gray-500' />
                             <span class='absolute -right-1  -top-0.5 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-xs leading-tight text-center'>
-                                5
+                                {books.length}
                             </span>
                         </a>
                     </li>
@@ -65,7 +72,7 @@ export default function Menu(props) {
                         >
                             <GoHeartFill className='text-2xl flex-shrink-0 text-gray-400 group-hover:text-gray-500' />
                             <span class='absolute -right-2  -top-0.5 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-xs leading-tight text-center'>
-                                5
+                                {books.length}
                             </span>
                         </a>
                     </li>

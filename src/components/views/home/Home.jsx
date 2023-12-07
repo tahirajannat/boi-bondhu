@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Ad from '../../../assets/images/ad.png';
-import { selectProductShop } from '../../../redux/reducers/productShopSlice';
+import {
+    selectProductShop,
+    updateProductShop,
+} from '../../../redux/reducers/productShopSlice';
 import BannerSlider from '../../common/BannerSlider';
 import BookCard from '../../common/BookCard';
 import TitleSection from '../../common/TitleSection';
@@ -96,22 +99,21 @@ export default function Home() {
     const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
     const addToBookmark = (item) => {
-        // Check if the item is already bookmarked
         const isBookmarked = bookmarkedItems.some(
             (bookmark) => bookmark.id === item.id
         );
 
         if (isBookmarked) {
-            // If bookmarked, remove it from bookmarks
             const updatedBookmarks = bookmarkedItems.filter(
                 (bookmark) => bookmark.id !== item.id
             );
             setBookmarkedItems(updatedBookmarks);
         } else {
-            // If not bookmarked, add it to bookmarks
             setBookmarkedItems((prevBookmarks) => [...prevBookmarks, item]);
         }
+        dispatch(updateProductShop({ wishlistItems: bookmarkedItems }));
     };
+
     console.log('bookmarked', bookmarkedItems);
     return (
         <div className='my-8 container mx-auto px-20'>
