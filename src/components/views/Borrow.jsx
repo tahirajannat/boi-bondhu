@@ -40,7 +40,6 @@ export default function Borrow() {
         );
     };
     useEffect(() => {
-        // Use the spread operator to create a new array with the elements of productShop.allBooks
         setSelectedPrices([...productShop.allBooks]);
     }, [productShop.allBooks]);
 

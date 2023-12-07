@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
+    FaBookmark,
     FaFacebookF,
     FaLinkedinIn,
     FaRegBookmark,
@@ -12,10 +13,10 @@ export default function BookCard({
     startIndex,
     endIndex,
     addToBookmark,
+    onClick,
 }) {
     const slicedBooks = items.slice(startIndex, endIndex);
     const displayedItems = endIndex ? items.slice(0, endIndex) : items;
-    const [bookmarkCount, setBookmarkCount] = useState(0);
 
     // const handleBuyNowClick = (product) => {
     //     dispatch(setProductDetails(product));
@@ -32,10 +33,7 @@ export default function BookCard({
         ];
         return images[index % images.length]; // Cycling through colors htmlFor each product
     };
-    const handleAddToBookmark = (item) => {
-        // addToBookmark(item);
-        setBookmarkCount((prevCount) => prevCount + 1);
-    };
+
     return (
         <>
             {slicedBooks.map((item, index) => (
@@ -63,25 +61,20 @@ export default function BookCard({
                         )}
 
                         <div className='absolute top-2 left-2'>
-                            <FaRegBookmark
-                                className='text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all'
-                                onClick={() => handleAddToBookmark(item)}
-                            />
-
-                            {/* <Bookmark /> */}
+                            {item.isBookmarked ? (
+                                <FaBookmark
+                                    className='text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all'
+                                    onClick={() => addToBookmark(item)}
+                                />
+                            ) : (
+                                <FaRegBookmark
+                                    className='text-teal-600 cursor-pointer hover:text-yellow-500 duration-75 transition-all'
+                                    onClick={() => addToBookmark(item)}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className='bg-white'>
-                        {/* <div className='flex items-center justify-between px-4 pt-4'>
-                            <div>
-                                <FaRegBookmark />
-                            </div>
-                            <div className='bg-yellow-200 py-1.5 px-4 rounded-[2px]'>
-                                <p className='focus:outline-none text-xs text-yellow-700'>
-                                    Featured
-                                </p>
-                            </div>
-                        </div> */}
                         <div className='px-4 pt-4 pb-2'>
                             <div className='flex items-center'>
                                 <h2 className='focus:outline-none text-lg text-gray-800 font-semibold'>

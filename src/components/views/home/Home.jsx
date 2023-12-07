@@ -19,6 +19,7 @@ export default function Home() {
     const [selectedPrices, setSelectedPrices] = useState([]);
     const [products, setProducts] = useState(productShop.allBooks);
     const [tags, setTags] = useState([productShop.allBooks]);
+    const [bookmarkCount, setBookmarkCount] = useState(0);
 
     const preference = products.map((product) => product.tag);
     console.log('all preferences', preference);
@@ -90,7 +91,28 @@ export default function Home() {
 
         return filteredBooks;
     };
+    const [bookmarks, setBookmarks] = useState([]);
 
+    const [bookmarkedItems, setBookmarkedItems] = useState([]);
+
+    const addToBookmark = (item) => {
+        // Check if the item is already bookmarked
+        const isBookmarked = bookmarkedItems.some(
+            (bookmark) => bookmark.id === item.id
+        );
+
+        if (isBookmarked) {
+            // If bookmarked, remove it from bookmarks
+            const updatedBookmarks = bookmarkedItems.filter(
+                (bookmark) => bookmark.id !== item.id
+            );
+            setBookmarkedItems(updatedBookmarks);
+        } else {
+            // If not bookmarked, add it to bookmarks
+            setBookmarkedItems((prevBookmarks) => [...prevBookmarks, item]);
+        }
+    };
+    console.log('bookmarked', bookmarkedItems);
     return (
         <div className='my-8 container mx-auto px-20'>
             <div className='grid grid-cols-12 gap-6 container mx-auto'>
@@ -119,7 +141,11 @@ export default function Home() {
                             link={'/borrow'}
                         />
                         <div className='grid grid-cols-4 gap-6'>
-                            <BookCard items={tags} endIndex={4} />
+                            <BookCard
+                                items={tags}
+                                endIndex={4}
+                                addToBookmark={addToBookmark}
+                            />
                         </div>
                     </>
                 )}
