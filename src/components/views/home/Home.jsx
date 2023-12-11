@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Ad from '../../../assets/images/ad.png';
-import {
-    selectProductShop,
-    updateProductShop,
-} from '../../../redux/reducers/productShopSlice';
+import { selectProductShop } from '../../../redux/reducers/productShopSlice';
 import BannerSlider from '../../common/BannerSlider';
 import BookCard from '../../common/BookCard';
 import TitleSection from '../../common/TitleSection';
@@ -96,25 +93,6 @@ export default function Home() {
     };
     const [bookmarks, setBookmarks] = useState([]);
 
-    const [bookmarkedItems, setBookmarkedItems] = useState([]);
-
-    const addToBookmark = (item) => {
-        const isBookmarked = bookmarkedItems.some(
-            (bookmark) => bookmark.id === item.id
-        );
-
-        if (isBookmarked) {
-            const updatedBookmarks = bookmarkedItems.filter(
-                (bookmark) => bookmark.id !== item.id
-            );
-            setBookmarkedItems(updatedBookmarks);
-        } else {
-            setBookmarkedItems((prevBookmarks) => [...prevBookmarks, item]);
-        }
-        dispatch(updateProductShop({ wishlistItems: bookmarkedItems }));
-    };
-
-    console.log('bookmarked', bookmarkedItems);
     return (
         <div className='my-8 container mx-auto px-20'>
             <div className='grid grid-cols-12 gap-6 container mx-auto'>
@@ -146,7 +124,7 @@ export default function Home() {
                             <BookCard
                                 items={tags}
                                 endIndex={4}
-                                addToBookmark={addToBookmark}
+                                // addToBookmark={addToBookmark}
                             />
                         </div>
                     </>

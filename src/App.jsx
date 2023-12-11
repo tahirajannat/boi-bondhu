@@ -21,8 +21,10 @@ import DashboardMain from './components/views/dashboard/DashboardMain';
 import Protected from './components/views/dashboard/Protected';
 import Home from './components/views/home/Home';
 import Archive from './components/views/product/Archive';
+import Bookmark from './components/views/product/Bookmark';
 import Cart from './components/views/product/Cart';
 import Checkout from './components/views/product/Checkout';
+import SingleBookmark from './components/views/product/SingleBookmark';
 import SingleProduct from './components/views/product/SingleProduct';
 
 function App() {
@@ -69,9 +71,11 @@ function App() {
                     {/* <Route path='/:id' element={<SingleProduct />} /> */}
                     <Route path='/shop2' element={<Shop />} />
                     {/* <Route path='/itemSlug' element={<ItemSingle />} /> */}
-                    <Route path='/itemSlug' element={<SingleProduct />} />
+                    <Route path='/bookmark/:id' element={<SingleBookmark />} />
                     <Route path='/chat' element={<ChatBox />} />
                     <Route path='/comment' element={<CommentBox />} />
+                    <Route path='/cart' element={<Cart />} />
+                    <Route path='/bookmark' element={<Bookmark />} />
                     {/* <Route path='/dashboard' element={<DashboardUser />} /> */}
                     {/* <Route path='/dashboard' element={<DashboardMain />} /> */}
                     <Route

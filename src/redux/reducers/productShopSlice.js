@@ -217,7 +217,8 @@ const initialState = {
         },
     ],
     selectedProduct: null,
-    wishlistItems: [],
+    bookmarkItems: [],
+    cartItems: [],
 };
 
 const productShopSlice = createSlice({

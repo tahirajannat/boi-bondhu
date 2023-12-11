@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
     FaBookmark,
     FaFacebookF,
@@ -6,25 +6,37 @@ import {
     FaRegBookmark,
     FaTwitter,
 } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+    selectProductShop,
+    updateProductShop,
+} from '../../redux/reducers/productShopSlice';
 
-export default function BookCard({
-    items,
-    startIndex,
-    endIndex,
-    addToBookmark,
-    onClick,
-}) {
+export default function BookCard({ items, startIndex, endIndex, onClick }) {
+    const productShop = useSelector(selectProductShop);
+    const dispatch = useDispatch();
     const slicedBooks = items.slice(startIndex, endIndex);
     const displayedItems = endIndex ? items.slice(0, endIndex) : items;
 
-    // const handleBuyNowClick = (product) => {
-    //     dispatch(setProductDetails(product));
+    const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
-    //     // Redirect to the single product page
-    //     history.push('/shop/:id');
-    // };
-    // // console.log('history', history);
+    const addToBookmark = (item) => {
+        const isBookmarked = bookmarkedItems.some(
+            (bookmark) => bookmark.id === item.id
+        );
+
+        if (isBookmarked) {
+            const updatedBookmarks = bookmarkedItems.filter(
+                (bookmark) => bookmark.id !== item.id
+            );
+            setBookmarkedItems(updatedBookmarks);
+        } else {
+            setBookmarkedItems((prevBookmarks) => [...prevBookmarks, item]);
+        }
+        dispatch(updateProductShop({ bookmarkItems: bookmarkedItems }));
+    };
+
     const getBackgroundImage = (index) => {
         const images = [
             'bg-product-bg-1',

@@ -3,10 +3,7 @@ import { StarIcon } from '@heroicons/react/20/solid';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import {
-    selectProductShop,
-    updateProductShop,
-} from '../../../redux/reducers/productShopSlice';
+import { selectProductShop } from '../../../redux/reducers/productShopSlice';
 
 const product = {
     name: 'Application UI Icon Pack',
@@ -99,7 +96,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function SingleProduct({ items }) {
+export default function SingleBookmark({ items }) {
     const productShop = useSelector(selectProductShop);
     const dispatch = useDispatch();
     const [books, setBooks] = useState([]);
@@ -118,31 +115,6 @@ export default function SingleProduct({ items }) {
     }, [productShop.allBooks, productId]);
 
     console.log('id', books);
-
-    // const handleBuyNowClick = (product) => {
-    //     dispatch(setProductDetails(product));
-
-    //     // Redirect to the single product page
-    //     history.push('/shop/:id');
-    // };
-    // // console.log('history', history);
-    const [bookmarkedItems, setBookmarkedItems] = useState([]);
-
-    const addToBookmark = (item) => {
-        const isBookmarked = bookmarkedItems.some(
-            (bookmark) => bookmark.id === item.id
-        );
-
-        if (isBookmarked) {
-            const updatedBookmarks = bookmarkedItems.filter(
-                (bookmark) => bookmark.id !== item.id
-            );
-            setBookmarkedItems(updatedBookmarks);
-        } else {
-            setBookmarkedItems((prevBookmarks) => [...prevBookmarks, item]);
-        }
-        dispatch(updateProductShop({ cartItems: bookmarkedItems }));
-    };
 
     return (
         <div className='bg-white'>
@@ -232,7 +204,6 @@ export default function SingleProduct({ items }) {
                                     <button
                                         type='button'
                                         className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50'
-                                        onClick={() => addToBookmark(item)}
                                     >
                                         Add to Cart
                                     </button>
