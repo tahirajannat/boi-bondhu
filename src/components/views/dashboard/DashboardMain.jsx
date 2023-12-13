@@ -404,7 +404,7 @@ export default function DashboardMain() {
                         </div>
                     </div>
 
-                    <main className='py-10 h- mb-10'>
+                    <main className='py-4 mb-10'>
                         <div className='px-4 sm:px-6 lg:px-8 grid grid-cols-4 gap-6'>
                             <div className='col-span-4'>
                                 <DashboardUser />
