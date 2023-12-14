@@ -28,7 +28,7 @@ export default function DashboardUser() {
     };
 
     return (
-        <div className='container mx-auto px-52  my-10 pt-6 grid grid-cols-12'>
+        <div className='container mx-auto  pt-6 grid grid-cols-12'>
             <div className='col-span-8'>
                 <PostBook />
             </div>
