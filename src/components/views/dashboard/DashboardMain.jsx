@@ -15,6 +15,7 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { Fragment, useState } from 'react';
+import SingleSelect from '../../common/SingleSelect';
 import UserDataTable from '../../table/UserDataTable';
 import DashboardUser from '../DashboardUser';
 import Dashboard from './Dashboard';

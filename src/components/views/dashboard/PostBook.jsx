@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProductShop } from '../../../redux/reducers/productShopSlice';
 import { preferences, tags } from '../../../utility/data';
+import { dhakaCity } from '../../../utility/dhakaCity';
 import Input from '../../common/Input';
 import Select from '../../common/Select';
+import SingleSelect from '../../common/SingleSelect';
 import DescriptionBox from './DescriptionBox';
 
 const PostBook = () => {
+    const dispatch = useDispatch();
+    const productShop = useSelector(selectProductShop);
+    console.log('first category', productShop.allBooks.category);
+    const [products, setProducts] = useState(productShop.allBooks);
+
+    const categories = products.map((product) => product.category);
+    console.log('all categories', categories);
+    // const filterBuySell = (buySell, categories) => {
+    //     let filterBuySell = buySell;
+    //     if (categories.length > 0) {
+    //         filterBuySell = filterBuySell.filter(
+    //             (book) => book.category === book.category
+    //         );
+    //     }
+
+    //     return filterBuySell;
+    // };
+    // useEffect(() => {
+    //     setBuySell(filterBuySell(productShop.allBooks, categories));
+    // }, [productShop.allBooks]);
+    // console.log('category', buySell);
+
+    const mappedOptionList = dhakaCity.map((option) => ({
+        value: option.id, // Use the correct property here (e.g., option.value)
+        label: option.area_name.bn ? option.area_name.bn : option.area_name.bn,
+    }));
+
     return (
         <div>
             <div className='py-4 px-16'>
@@ -44,7 +75,7 @@ const PostBook = () => {
                         Area
                     </label>
 
-                    <Input
+                    {/* <Input
                         className={' w-full'}
                         placeholder={'Enter your Area'}
                         name='title'
@@ -52,7 +83,15 @@ const PostBook = () => {
                         required={true}
                         value={''}
                         // onChange={}
-                    />
+                    /> */}
+                    {/* <Select title={'Area'} items={dhakaCity} /> */}
+                    <SingleSelect optionList={mappedOptionList} />
+                    {/* <SearchSelect
+                        loadOptions={mappedOptionList}
+                        option={mappedOptionList}
+                        // value={}
+                        onChange={handleProductSelect}
+                    /> */}
                 </div>
                 <div className='w-full'>
                     <label for='name' className='text-sm text-gray-600'>
