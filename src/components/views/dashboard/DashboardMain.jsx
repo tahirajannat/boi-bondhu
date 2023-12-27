@@ -15,7 +15,6 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { Fragment, useState } from 'react';
-import SingleSelect from '../../common/SingleSelect';
 import UserDataTable from '../../table/UserDataTable';
 import DashboardUser from '../DashboardUser';
 import Dashboard from './Dashboard';
@@ -23,7 +22,7 @@ import Dashboard from './Dashboard';
 const navigation = [
     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
     { name: 'Books', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+    { name: 'Blog', href: '/blog-post', icon: CalendarIcon, current: false },
     {
         name: 'Documents',
         href: '#',

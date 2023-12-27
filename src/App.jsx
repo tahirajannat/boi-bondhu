@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+
 // import Borrow from './components/Borrow';
 import ChatBox from './components/common/ChatBox';
 import CommentBox from './components/common/CommentBox';
@@ -18,6 +19,7 @@ import Bookshare from './components/views/about/bookshare/Bookshare';
 import BlogMain from './components/views/blog/BlogMain';
 import BlogSingle from './components/views/blog/BlogSingle';
 import DashboardMain from './components/views/dashboard/DashboardMain';
+import Posts from './components/views/dashboard/Posts';
 import Protected from './components/views/dashboard/Protected';
 import Home from './components/views/home/Home';
 import Archive from './components/views/product/Archive';
@@ -63,6 +65,7 @@ function App() {
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/shop' element={<Archive />} />
                     <Route path='/blog' element={<BlogMain />} />
+                    <Route path='/blog-post' element={<Posts />} />
                     <Route path='/book-share' element={<Bookshare />} />
 
                     <Route path='/single' element={<BlogSingle />} />

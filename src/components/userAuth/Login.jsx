@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
-import { useNavigate } from 'react-router-dom';
+import { fetchSomeData } from '../../api service/apiService';
 
 // import {
 //   passwordDecryption,
 //   passwordEncryption,
 // } from "../utility/passwordEncryption";
 export default function Login() {
-    const navigate = useNavigate();
-
     const [showModal, setShowModal] = useState(false);
-
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
 
@@ -30,7 +27,7 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    const handlehtmlFormSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
 
         if (email !== '') {
@@ -38,12 +35,10 @@ export default function Login() {
                 /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             if (emailRegex.test(email)) {
                 setEmailError('');
-                if (email === 'admin@gmail.com') {
+                if (email === 'admin@demo.com') {
                     setEmailError('');
                     if (password === 'demo') {
                         setSuccessMsg('You are succesfully logged in');
-                        navigate('/dashboard');
-                        setShowModal(false);
                     } else {
                         setPasswordError('password does not match');
                     }
@@ -63,55 +58,23 @@ export default function Login() {
         }
     };
 
-    const handlehtmlFormSubmit1 = (e) => {
-        e.preventDefault();
-        // console.log(`💩`, passwordEncryption("jkl"));
-        // console.log(`💩`, passwordDecryption("jkl"));
+    const [data, setData] = useState(null);
 
-        console.log(`💩`, { email, password });
-
-        if (email !== '') {
-        } else {
-            setEmailError('Email Required');
+    // Fetch data when the component mounts
+    async function handleFormSubmit1() {
+        try {
+            const result = await fetchSomeData();
+            setData(result);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
+    }
 
-        if (password !== '') {
-        } else {
-            setPasswordError('Passwoed Required');
-        }
-
-        //   const requestOptions = {
-        //     method: "GET",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({
-        //       email: userEmail,
-        //       password: userPass,
-        //     }),
-        //   };
-        //   try {
-        //     const response = await fetch(
-        //       "http://localhost:3009/api/user",
-        //       requestOptions
-        //     );
-        //     const data = await response.json();
-        //     console.log(`💩 ~ file: SignUp.js ~ line 22 ~ handleSignUp ~ data`, data);
-        //     if (data) {
-        //       toast(`${data?.message}`);
-        //     } else toast("Something Wrong !!");
-        //   } catch (error) {
-        //     toast("Something Wrong Or Duplicate Email !!");
-        //   }
-        // };
-    };
-    const navigateHome = () => {
-        if (email !== false) {
-            navigate('/dashboard');
-        } else {
-            console.log('Authentication error');
-        }
-        setShowModal(false);
-    };
-
+    // useEffect block
+    useEffect(() => {
+        handleFormSubmit1();
+    }, []);
+    console.log('Auth successful', data);
     return (
         <>
             <button
@@ -129,7 +92,7 @@ export default function Login() {
                                 <button
                                     className='text-red-500 background-transparent font-bold uppercase py-2 text-2xl outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                                     type='button'
-                                    // onClick={navigateHome}
+                                    onClick={() => setShowModal(false)}
                                 >
                                     <RiCloseCircleFill />
                                 </button>
@@ -140,17 +103,17 @@ export default function Login() {
                                 </h2>
 
                                 {successMsg && (
-                                    <div className='text-white bg-teal-500 py-2 mb-4 text-center'>
+                                    <div className='text-white bg-teal-500 py-4 mb'>
                                         {successMsg}
                                     </div>
                                 )}
 
-                                <htmlForm
+                                <form
                                     className='mb-4 text-left'
                                     action='/'
                                     method='post'
                                     autoComplete='off'
-                                    onSubmit={handlehtmlFormSubmit1}
+                                    onSubmit={handleFormSubmit1}
                                 >
                                     <div className='mb-4 md:w-full'>
                                         <label
@@ -196,25 +159,17 @@ export default function Login() {
                                             {passwordError}
                                         </div>
                                     )}
-                                    <div className='block text-center mx-auto'>
-                                        <button
-                                            className='bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded  '
-                                            onClick={handlehtmlFormSubmit}
-                                        >
-                                            Login
-                                        </button>
-                                        <div className='my-4'>
-                                            <a
-                                                className='text-blue-700 text-left text-sm'
-                                                href='/login'
-                                            >
-                                                Forgot password?
-                                            </a>
-                                        </div>
-                                    </div>
-                                </htmlForm>
-
-                                <p className='text-xs text-center mt-4'>
+                                    <button className='bg-yellow-500 hover:bg-yellow-600 text-white uppercase text-sm font-semibold px-4 py-2 rounded'>
+                                        Login
+                                    </button>
+                                </form>
+                                <a
+                                    className='text-blue-700 text-left text-sm'
+                                    href='/login'
+                                >
+                                    Forgot password?
+                                </a>
+                                <p className='text-sm text-center mt-4'>
                                     By signing up, you agree to our{' '}
                                     <a
                                         href='#'
